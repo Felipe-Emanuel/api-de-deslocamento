@@ -8,11 +8,9 @@ export const getData = async (path: string) => {
     const resp = api.get(`/${path}`);
     const { data } = await resp;
 
-    toast.success("Sucesso")
-    return console.log(data);
+    return data
   } catch (error) {
     console.error(`Erro ao recuperar dados de ${path}:`, error);
-    toast.error(`Erro ao recuperar dados de ${path}`);
   }
 };
 

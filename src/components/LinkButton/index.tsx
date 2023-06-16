@@ -1,9 +1,7 @@
+import { useStateContext } from "@/src/data/hooks/useStateContext";
 import { Button } from "@mui/material";
 import Link from "next/link";
 
-interface LinkButtonProps{
- state: "cliente" | "deslocamento" | "condutor" | "veículo"
-}
 
 const routes = {
   cliente: "/client",
@@ -12,7 +10,9 @@ const routes = {
   veículo: "vehicle"
 }
 
-export function LinkButton({state = "cliente"}: LinkButtonProps) {
+export function LinkButton() {
+  const { state } = useStateContext()
+
   return (
     <Link href={routes[state]} >
      <Button

@@ -38,6 +38,13 @@
 body {
   background: var(--primary);
   color: var(--tertiary);
+  width: 100%;
+}
+
+@media (max-width: 1280px) {
+  body{
+    width: fit-content;
+  }
 }
 
 body,
@@ -55,4 +62,35 @@ button {
 a {
   color: var(--white);
   text-decoration: none;
+}
+
+input[type=number]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+
+}
+input[type=number] {
+ -moz-appearance: textfield;
+ appearance: textfield;
+
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--tertiary);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--secondary);
+}
+
+::-webkit-scrollbar-track {
+  background-color: trnasparent;
 }

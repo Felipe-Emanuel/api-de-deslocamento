@@ -19,7 +19,7 @@ export function BoxMenu() {
         <MenuItem />
       </div>
       <h2 className={styles.subtitle}>{subtitles[state]}</h2>
-      <LinkButton state={state} />
+      <LinkButton />
     </div>
   )
 }

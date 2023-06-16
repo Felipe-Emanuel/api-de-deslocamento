@@ -1,0 +1,34 @@
+.thumb {
+  width: 100%;
+  height: 100%;
+  padding: 1rem;
+  background-image: url(../../../../public/images/thumb.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  align-items: flex-end;
+}
+
+.skeleton {
+  background-color: var(--white);
+  padding: 0.5rem;
+  width: 60%;
+  border-radius: var(--xs);
+  box-shadow: black 0px 0px 5px;
+}
+
+.autocomplete {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+}
+
+@media (max-width: 768px) {
+  .autocomplete {
+    width: 40%;
+  }
+  .skeleton {
+    width: 55%;
+  }
+}
