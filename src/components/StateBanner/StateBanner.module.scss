@@ -1,0 +1,71 @@
+@keyframes appearTop {
+  100% {
+    transform: translateY(2rem);
+  }
+}
+
+@keyframes appearLeft {
+  100% {
+    transform: translateX(-4rem);
+  }
+}
+
+@keyframes appearRight {
+  100% {
+    transform: translateX(-6rem) translateY(4rem);
+  }
+}
+
+.container {
+  width: fit-content;
+  height: 16rem;
+  color: var(--white);
+  position: relative;
+  z-index: 2;
+
+
+  h2,
+  h4 {
+    color: var(--secondary);
+    position: relative;
+  }
+
+  h2,
+  h3,
+  h4 {
+    font-size: var(--2xl);
+    animation-delay: 150ms;
+    animation-duration: 2500ms;
+    animation-fill-mode: forwards;
+    animation-timing-function: alternate;
+  }
+
+  h2 {
+    animation-name: appearRight;
+  }
+
+  h3,
+  h4 {
+    position: relative;
+  }
+
+  h3 {
+    animation-name: appearTop;
+    top: 1rem;
+  }
+
+  h4 {
+    animation-name: appearLeft;
+    top: 2rem;
+  }
+}
+
+@media (max-width: 1200px) {
+  .container {
+    h2,
+    h3,
+    h4 {
+      font-size: var(--xl);
+    }
+  }
+}

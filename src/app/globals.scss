@@ -1,0 +1,58 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --white: #fff;
+  --black: #000;
+  --primary: #121214;
+  --secondary: #9953f2;
+  --tertiary: #c4c4c4c4;
+}
+
+:root {
+  --2xl: 4.5rem; //72px
+  --xl: 3rem; //48px
+  --lg: 2.25rem;  //36px
+  --md: 1.5rem; //24px
+  --sm: 0.875rem; //14px
+  --xs: 0.625rem; //10px
+}
+
+@media (max-width: 1080px) {
+  html {
+    font-size: 93.75%;
+  }
+}
+
+@media (max-width: 720px) {
+  html {
+    font-size: 87.5%;
+  }
+}
+
+body {
+  background: var(--primary);
+  color: var(--tertiary);
+}
+
+body,
+input,
+select,
+textarea,
+button {
+  font: 400 1rem "Roboto", sans-serif;
+}
+
+button {
+  cursor: pointer;
+}
+
+a {
+  color: var(--white);
+  text-decoration: none;
+}

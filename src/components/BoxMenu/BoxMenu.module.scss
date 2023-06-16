@@ -1,0 +1,19 @@
+.container {
+  width: 35rem;
+  height: 28rem;
+  background-color: var(--primary);
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-radius: var(--xs);
+  z-index: 2;
+}
+
+.title {
+  font-size: var(--lg);
+}
+
+.subtitle {
+  font-size: var(--xl);
+}
