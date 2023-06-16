@@ -8,13 +8,12 @@ import LoadingAvatar from "@/public/images/loadingAvatar.png";
 import { Normalize } from "@/src/functions/Normalize";
 import Skeleton from "@mui/material/Skeleton";
 import Stack from "@mui/material/Stack";
-import { srca } from "./SecondClientThumb.test";
 
 interface SecondClientThumbProps {
   src?: StaticImageData | string;
 }
 
-export function SecondClientThumb({ src = srca }: SecondClientThumbProps) {
+export function SecondClientThumb({ src = 'https//' }: SecondClientThumbProps) {
   const { capitalizeName } = Normalize();
   const { state } = useStateContext();
   const [value, setValue] = useState({

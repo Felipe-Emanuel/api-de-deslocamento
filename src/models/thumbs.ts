@@ -2,27 +2,19 @@ import { ReactNode } from "react";
 
 export type Thumbs = {
   cliente: {
-    first: ReactNode;
-    second: ReactNode;
-    firstTitle: string
+    secondThumb: ReactNode;
     secondTitle: string;
   };
   deslocamento: {
-    first: ReactNode;
-    second: ReactNode;
-    firstTitle: string
+    secondThumb: ReactNode;
     secondTitle: string;
   };
   condutor: {
-     first: ReactNode;
-    second: ReactNode;
-    firstTitle: string
+    secondThumb: ReactNode;
     secondTitle: string;
   };
   veículo: {
-    first: ReactNode;
-    second: ReactNode;
-    firstTitle: string
+    secondThumb: ReactNode;
     secondTitle: string;
   };
 };

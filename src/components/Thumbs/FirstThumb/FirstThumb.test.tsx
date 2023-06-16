@@ -1,14 +1,14 @@
 import { render } from "@testing-library/react"
-import { FirstClientThumb } from "."
+import { FirstThumb } from "."
 
-describe("<FirstClientThumb/>", () => {
+describe("<FirstThumb/>", () => {
   it("should render without errors", () => {
-    const { container } = render(<FirstClientThumb />)
+    const { container } = render(<FirstThumb />)
     expect(container).toBeInTheDocument()
   })
 
   it("renders default state field", () => {
-    const {getByText} = render(<FirstClientThumb />);
+    const {getByText} = render(<FirstThumb />);
 
     const autocomplete = getByText("Cliente");
     expect(autocomplete).toBeInTheDocument();
