@@ -4,6 +4,7 @@ import { useStateContext } from "@/src/data/hooks/useStateContext";
 import { Thumbs } from "@/src/models/thumbs";
 import { SecondClientThumb } from "../Thumbs/SecondClientThumb";
 import { FirstThumb } from "../Thumbs/FirstThumb";
+import { SecondConductorThumb } from "../Thumbs/SecondConductorThumb";
 
 export function InfoSection() {
   const { state } = useStateContext();
@@ -17,15 +18,15 @@ export function InfoSection() {
     },
     deslocamento: {
       secondThumb: <SecondClientThumb />,
-      secondTitle: "",
+      secondTitle: ``,
     },
     condutor: {
-      secondThumb: <SecondClientThumb />,
-      secondTitle: "",
+      secondThumb: <SecondConductorThumb />,
+      secondTitle: `Junte-se a nós e seja um dos habilidosos condutores em nossa comunidade!`,
     },
     veículo: {
       secondThumb: <SecondClientThumb />,
-      secondTitle: "",
+      secondTitle: ``,
     },
   };
 
