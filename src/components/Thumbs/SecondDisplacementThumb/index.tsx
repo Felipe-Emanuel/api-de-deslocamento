@@ -14,7 +14,7 @@ export function SecondDisplacementThumb() {
     homeDisplacement: "",
     reason: "",
     observation: "",
-    idConductor: 0,
+    idConductor: '',
   });
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
