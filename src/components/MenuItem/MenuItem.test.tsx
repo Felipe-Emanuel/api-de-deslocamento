@@ -1,27 +1,41 @@
-import { fireEvent, render, waitFor } from "@testing-library/react"
-import { MenuItem } from "."
-
-const mockFn = jest.fn()
+import { fireEvent, render, waitFor } from "@testing-library/react";
+import { MenuItem } from ".";
+import * as mock from "./mock";
 
 describe("<MenuItem />", () => {
-  it("should render without errors", () => {
-    const { container } = render(<MenuItem />)
+  beforeEach(() => {
+    mock.mockSetState.mockClear();
+    mock.mockSetPageState.mockClear();
+  });
 
-    expect(container).toBeInTheDocument()
-  })
+  it("should call 'setPageState' function when outHome is true", async () => {
+    mock.mockUseStateContext.mockReturnValueOnce({
+      outHome: true,
+      state: "",
+      setState: mock.mockSetState,
+    });
 
-  it("should modify active tab text", async() => {
-    const { getByText } = render(<MenuItem />)
+    const { getAllByRole } = render(<MenuItem />);
+    const tabs = getAllByRole("tab");
 
-    const client = getByText("cliente")
-    const clientTabIndex = client.getAttribute("tabindex")
-    expect(clientTabIndex).toEqual("0")
-
-    const vehicle = getByText("veículo")
-    const vehicleTabIndex = client.getAttribute("tabindex")
-    fireEvent.click(vehicle, mockFn())
+    fireEvent.click(tabs[0], mock.mockSetPageState());
     await waitFor(() => {
-      expect(vehicleTabIndex).toEqual("0")
-    })
-  })
-})
+      expect(mock.mockUsePageStateContext().setPageState).toHaveBeenCalled();
+    });
+  });
+
+  it("should call 'setState' function when outHome is false", () => {
+    mock.mockUseStateContext.mockReturnValueOnce({
+      outHome: false,
+      state: "",
+      setState: mock.mockSetState,
+    });
+
+    const { getAllByRole } = render(<MenuItem />);
+    const tabs = getAllByRole("tab");
+
+    fireEvent.click(tabs[0], mock.mockSetState());
+
+    expect(mock.mockSetState).toHaveBeenCalledWith();
+  });
+});

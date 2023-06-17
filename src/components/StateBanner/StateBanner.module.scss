@@ -16,6 +16,12 @@
   }
 }
 
+@keyframes appearEnd {
+  100% {
+    transform: translateX(4.5rem) translateY(1rem);
+  }
+}
+
 @keyframes border-animation {
   0% { border-color: purple; box-shadow: 0 0 1rem purple; }
   33% { border-color: orange; box-shadow: 0 0 1rem orange; }
@@ -74,7 +80,14 @@
     border: 2px solid var(--secondary);
     animation: border-animation 4s infinite linear;
   }
+
+  .outHomeSubtitle {
+    top: 2rem;
+    animation-name: appearEnd;
+    text-align: center;
+  }
 }
+
 
 @media (max-width: 1200px) {
   .container {

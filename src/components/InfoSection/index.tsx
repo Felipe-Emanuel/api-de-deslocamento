@@ -57,10 +57,10 @@ export function InfoSection() {
           tiltMaxAngleY={5}
           className={styles.thumb}
         >
-          {thumbs[state].secondThumb}
+          {thumbs[state!].secondThumb}
         </ParallaxTilt>
         <div className={styles.thumbInfo}>
-          <h2 data-testid="secondTitle">{thumbs[state].secondTitle}</h2>
+          <h2 data-testid="secondTitle">{thumbs[state!].secondTitle}</h2>
           <div className={styles.thumbButton}>
             <p>Explore todo o conteúdo ao acessar agora mesmo!</p>
             <LinkButton />

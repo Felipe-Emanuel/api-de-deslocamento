@@ -1,27 +1,13 @@
 "use client";
 import styles from "./Home.module.scss";
-import { ToastContainer } from "react-toastify";
-import { Header } from "../components/Header";
 import { Container } from "../components/containers/Container";
 import { Section } from "../components/containers/Section";
 import { InfoSection } from "../components/InfoSection";
 
 export default function Home() {
+
   return (
     <>
-      <Header />
-      <ToastContainer
-        position="top-right"
-        autoClose={1000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="dark"
-      />
       <Container>
         <h2 className={styles.subtitle}>
           Conectando você aos seus clientes, de forma simples e eficiente!

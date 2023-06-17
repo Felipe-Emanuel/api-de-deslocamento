@@ -7,9 +7,10 @@ import { Vehicle } from "@/src/models/vehicle";
 import { ReactNode, createContext, useState, useEffect, Dispatch, SetStateAction } from "react";
 import { getData } from "../services/client";
 import { toast } from "react-toastify";
+import { usePathname } from 'next/navigation';
 
 
-export type StateType = "cliente" | "deslocamento" | "condutor" | "veículo";
+export type StateType = "cliente" | "deslocamento" | "condutor" | "veículo" | undefined;
 
 interface StateContextProvider {
   children: ReactNode;
@@ -37,6 +38,7 @@ export type FiltredItem = {
 }
 
 type StateContextType = {
+  outHome: boolean,
   state: StateType,
   data: Card[]
   filteredData: FiltredItem[],
@@ -50,12 +52,25 @@ export const StateContext = createContext<StateContextType>({
   state: "cliente",
   filteredData: [],
   data: [],
+  outHome: false,
 });
 
 
 
 export const StateContextProvider = ({ children }: StateContextProvider) => {
-  const [state, setState] = useState<StateType>("cliente");
+  const asPath = usePathname();
+  const outHome = asPath !== "/";
+
+  const routes: {[key: string]: StateType} = {
+    "/client": 'cliente',
+    "/displacement": 'deslocamento',
+    "/conductor": "condutor",
+    "/vehicle": "veículo" ,
+  }
+
+  const initialState = outHome ? routes[asPath] : "cliente"
+
+  const [state, setState] = useState<StateType>(initialState);
   const [data, setData] = useState<Card[]>([]);
   const [filteredData, setFilteredData] = useState<FiltredItem[]>([
     {label: '', id: ''}
@@ -101,6 +116,7 @@ export const StateContextProvider = ({ children }: StateContextProvider) => {
       state,
       filteredData,
       data,
+      outHome,
       setState,
       setData,
     }}

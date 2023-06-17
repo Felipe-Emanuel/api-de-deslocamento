@@ -26,7 +26,7 @@ export function FirstThumb() {
     if (selectedOption) {
       const selectedId = selectedOption.id;
 
-      const resp = await getDataById(state, String(selectedId))
+      const resp = await getDataById(state!, String(selectedId))
       setData([resp])
     }
   };
@@ -49,7 +49,7 @@ export function FirstThumb() {
               id={params.id}
               variant="standard"
               color="warning"
-              label={capitalizeName(state)}
+              label={capitalizeName(state!)}
             />
           )}
         />

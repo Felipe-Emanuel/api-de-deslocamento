@@ -3,7 +3,7 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 
-export const getData = async (path: string) => {
+export const getData = async (path: string | undefined) => {
   const endpoint = path === "veículo" ? "veiculo" : path;
   try {
     const resp = api.get(`/${endpoint}`);
