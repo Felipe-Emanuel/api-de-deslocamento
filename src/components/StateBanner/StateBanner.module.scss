@@ -16,6 +16,13 @@
   }
 }
 
+@keyframes border-animation {
+  0% { border-color: purple; box-shadow: 0 0 1rem purple; }
+  33% { border-color: orange; box-shadow: 0 0 1rem orange; }
+  66% { border-color: pink;  box-shadow: 0 0 1rem pink; }
+  100% { border-color: purple; box-shadow: 0 0 1rem purple; }
+}
+
 .container {
   width: fit-content;
   height: 16rem;
@@ -58,6 +65,15 @@
     animation-name: appearLeft;
     top: 2rem;
   }
+
+  .demoButton{
+    position: absolute;
+    right: 0;
+    bottom: -5rem;
+    border-radius: 7px;
+    border: 2px solid var(--secondary);
+    animation: border-animation 4s infinite linear;
+  }
 }
 
 @media (max-width: 1200px) {
@@ -66,6 +82,10 @@
     h3,
     h4 {
       font-size: var(--xl);
+    }
+
+    .demoButton{
+      bottom: 0;
     }
   }
 }

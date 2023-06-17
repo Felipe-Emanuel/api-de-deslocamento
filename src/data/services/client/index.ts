@@ -4,8 +4,9 @@ import 'react-toastify/dist/ReactToastify.css';
 
 
 export const getData = async (path: string) => {
+  const endpoint = path === "veículo" ? "veiculo" : path;
   try {
-    const resp = api.get(`/${path}`);
+    const resp = api.get(`/${endpoint}`);
     const { data } = await resp;
 
     return data
@@ -15,12 +16,13 @@ export const getData = async (path: string) => {
 };
 
 export const getDataById = async (path: string, id: string) => {
+  const endpoint = path === "veículo" ? "veiculo" : path;
   try {
-    const resp = api.get(`/${path}/${id}`);
+    const resp = api.get(`/${endpoint}/${id}`);
     const { data } = await resp;
 
     toast.success("Sucesso")
-    return console.log(data);
+    return data
   } catch (error) {
     console.error(`Erro ao recuperar dados de ${path} ${id}:`, error);
     toast.error(`Erro ao recuperar dados de ${path} ${id}`);

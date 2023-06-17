@@ -8,6 +8,9 @@
   overflow: hidden;
   color: var(--black);
   font-weight: bold;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 
   h2, h4, p, span {
     font-size: var(--sm);

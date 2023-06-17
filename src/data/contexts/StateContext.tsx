@@ -4,7 +4,7 @@ import { Client } from "@/src/models/client";
 import { Conductor } from "@/src/models/conductor";
 import { Displacement } from "@/src/models/displacement";
 import { Vehicle } from "@/src/models/vehicle";
-import { ReactNode, createContext, useState, useEffect } from "react";
+import { ReactNode, createContext, useState, useEffect, Dispatch, SetStateAction } from "react";
 import { getData } from "../services/client";
 import { toast } from "react-toastify";
 
@@ -31,39 +31,41 @@ export type Card = {
   kmAtual: string;
 }
 
+export type FiltredItem = {
+  label: string;
+  id: string | number | undefined;
+}
+
 type StateContextType = {
   state: StateType,
   data: Card[]
-  filteredData: filtredItem[],
+  filteredData: FiltredItem[],
   setState: (state: StateType) => void;
+  setData: Dispatch<SetStateAction<Card[]>>
 };
 
 export const StateContext = createContext<StateContextType>({
   setState: () => {},
+  setData: () => {},
   state: "cliente",
   filteredData: [],
   data: [],
 });
 
-type filtredItem = {
-  label: string;
-  id: string | number | undefined;
-}
+
 
 export const StateContextProvider = ({ children }: StateContextProvider) => {
   const [state, setState] = useState<StateType>("cliente");
   const [data, setData] = useState<Card[]>([]);
-  const [filteredData, setFilteredData] = useState<filtredItem[]>([
+  const [filteredData, setFilteredData] = useState<FiltredItem[]>([
     {label: '', id: ''}
   ]);
-
-  const endpoint = state === "veículo" ? "veiculo" : state;
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const resp = await getData(endpoint);
-        const updatedFilteredData: filtredItem[] = [];
+        const resp = await getData(state);
+        const updatedFilteredData: FiltredItem[] = [];
 
         if (state === "cliente") {
           resp.forEach((client: Client) => {
@@ -100,6 +102,7 @@ export const StateContextProvider = ({ children }: StateContextProvider) => {
       filteredData,
       data,
       setState,
+      setData,
     }}
   >
     {children}

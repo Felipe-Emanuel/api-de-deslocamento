@@ -12,7 +12,7 @@ export default function Home() {
       <Header />
       <ToastContainer
         position="top-right"
-        autoClose={5000}
+        autoClose={1000}
         hideProgressBar={false}
         newestOnTop={false}
         closeOnClick
@@ -20,7 +20,7 @@ export default function Home() {
         pauseOnFocusLoss
         draggable
         pauseOnHover
-        theme="light"
+        theme="dark"
       />
       <Container>
         <h2 className={styles.subtitle}>

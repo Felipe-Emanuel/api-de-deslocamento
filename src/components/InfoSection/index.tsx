@@ -7,6 +7,7 @@ import { FirstThumb } from "../Thumbs/FirstThumb";
 import { SecondConductorThumb } from "../Thumbs/SecondConductorThumb";
 import { SecondDisplacementThumb } from "../Thumbs/SecondDisplacementThumb";
 import { SecondVehicleThumb } from "../Thumbs/SecondVehicleThumb";
+import ParallaxTilt from "react-parallax-tilt";
 
 export function InfoSection() {
   const { state } = useStateContext();
@@ -35,9 +36,13 @@ export function InfoSection() {
   return (
     <>
       <div className={styles.flexSection}>
-        <div className={styles.thumb}>
+        <ParallaxTilt
+          tiltMaxAngleX={5}
+          tiltMaxAngleY={5}
+          className={styles.thumb}
+        >
           <FirstThumb />
-        </div>
+        </ParallaxTilt>
         <div className={styles.thumbInfo}>
           <h2>{firstTitle}</h2>
           <div className={styles.thumbButton}>
@@ -47,9 +52,15 @@ export function InfoSection() {
         </div>
       </div>
       <div className={styles.flexSection}>
-        <div className={styles.thumb}>{thumbs[state].secondThumb}</div>
+        <ParallaxTilt
+          tiltMaxAngleX={5}
+          tiltMaxAngleY={5}
+          className={styles.thumb}
+        >
+          {thumbs[state].secondThumb}
+        </ParallaxTilt>
         <div className={styles.thumbInfo}>
-          <h2>{thumbs[state].secondTitle}</h2>
+          <h2 data-testid="secondTitle">{thumbs[state].secondTitle}</h2>
           <div className={styles.thumbButton}>
             <p>Explore todo o conteúdo ao acessar agora mesmo!</p>
             <LinkButton />
