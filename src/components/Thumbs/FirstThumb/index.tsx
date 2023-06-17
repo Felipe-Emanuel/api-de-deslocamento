@@ -1,27 +1,19 @@
 "use client";
 import { useStateContext } from "@/src/data/hooks/useStateContext";
 import styles from "./FirstThumb.module.scss";
-import Skeleton from "@mui/material/Skeleton";
-import Stack from "@mui/material/Stack";
+
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 import { Normalize } from "@/src/functions/Normalize";
+import { FloatCard } from "./FloatCard";
 
 export function FirstThumb() {
   const { capitalizeName } = Normalize();
-  const { state, filteredData } = useStateContext();
+  const { state, filteredData, data } = useStateContext();
 
   return (
     <div className={styles.thumb}>
-      <Stack spacing={2} className={styles.skeleton}>
-        <Skeleton variant="circular" width={40} height={40} sx={{ width: '100%' }} />
-        <Skeleton variant="rounded" height={10} sx={{ width: '90%' }} />
-        <Skeleton variant="rounded" height={10} sx={{ width: '70%' }} />
-        <Skeleton variant="rounded" height={10} sx={{ width: '95%' }} />
-        <Skeleton variant="rounded" height={10} sx={{ width: '100%' }} />
-        <Skeleton variant="rounded" height={10}  sx={{ width: '66%' }} />
-        <Skeleton variant="rounded" height={10} sx={{ width: '83%' }} />
-      </Stack>
+        <FloatCard data={data} />
       <div className={styles.autocomplete}>
         <Autocomplete
           size="small"

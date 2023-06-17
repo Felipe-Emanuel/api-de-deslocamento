@@ -3,17 +3,11 @@ import { useStateContext } from "@/src/data/hooks/useStateContext";
 import styles from "./SecondClientThumb.module.scss";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
-import Image, { StaticImageData } from "next/image";
-import LoadingAvatar from "@/public/images/loadingAvatar.png";
 import { Normalize } from "@/src/functions/Normalize";
 import Skeleton from "@mui/material/Skeleton";
 import Stack from "@mui/material/Stack";
 
-interface SecondClientThumbProps {
-  src?: StaticImageData | string;
-}
-
-export function SecondClientThumb({ src = 'https//' }: SecondClientThumbProps) {
+export function SecondClientThumb() {
   const { capitalizeName } = Normalize();
   const { state } = useStateContext();
   const [value, setValue] = useState({
@@ -43,13 +37,7 @@ export function SecondClientThumb({ src = 'https//' }: SecondClientThumbProps) {
     <div className={styles.thumb}>
       <div className={styles.floatCard}>
         <div>
-          <Image
-            src={LoadingAvatar || src}
-            width={50}
-            height={50}
-            alt="load user avatar"
-            className={styles.avatar}
-          />
+          <Skeleton variant="circular" width={40} height={40} />
         </div>
         <h2>{userName}</h2>
         <div>

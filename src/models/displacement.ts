@@ -1,4 +1,5 @@
 export type Displacement = {
+  id?: number;
   kmInicial: number,
   inicioDeslocamento: Date,
   checkList: string,

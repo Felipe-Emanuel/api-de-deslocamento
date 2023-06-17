@@ -5,6 +5,8 @@ import { Thumbs } from "@/src/models/thumbs";
 import { SecondClientThumb } from "../Thumbs/SecondClientThumb";
 import { FirstThumb } from "../Thumbs/FirstThumb";
 import { SecondConductorThumb } from "../Thumbs/SecondConductorThumb";
+import { SecondDisplacementThumb } from "../Thumbs/SecondDisplacementThumb";
+import { SecondVehicleThumb } from "../Thumbs/SecondVehicleThumb";
 
 export function InfoSection() {
   const { state } = useStateContext();
@@ -17,16 +19,16 @@ export function InfoSection() {
       secondTitle: `Registre-se agora e faça parte da nossa comunidade de ${state} satisfeitos!`,
     },
     deslocamento: {
-      secondThumb: <SecondClientThumb />,
-      secondTitle: ``,
+      secondThumb: <SecondDisplacementThumb />,
+      secondTitle: `Registre seus deslocamentos e tenha um histórico completo das suas viagens!`,
     },
     condutor: {
       secondThumb: <SecondConductorThumb />,
       secondTitle: `Junte-se a nós e seja um dos habilidosos condutores em nossa comunidade!`,
     },
     veículo: {
-      secondThumb: <SecondClientThumb />,
-      secondTitle: ``,
+      secondThumb: <SecondVehicleThumb />,
+      secondTitle: `Explore nossa frota de veículos disponíveis e encontre o carro perfeito para suas necessidades!`,
     },
   };
 

@@ -1,0 +1,40 @@
+.floatCard {
+  background-color: var(--white);
+  padding: 0.5rem;
+  height: 100%;
+  width: 55%;
+  border-radius: var(--xs);
+  box-shadow: black 0px 0px 5px;
+  overflow: hidden;
+  color: var(--black);
+  font-weight: bold;
+
+  h2, h4, p, span {
+    font-size: var(--sm);
+    color: rgba(0, 0, 0, 0.5);
+    font-weight: bold;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+  }
+
+  .label {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    .header,
+    .Info {
+      width: fit-content;
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .Info {
+      padding-left: 3.5rem;
+    }
+  }
+}

@@ -5,63 +5,38 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
   position: relative;
-
-  h2{
-    color: var(--white);
-    width: 50%;
-  }
-
-  div {
-    display: flex;
-    gap: 1rem;
-    width: 100%;
-
-    .uf {
-      width: 20%;
-    }
-  }
+  color: var(--white);
 
   .floatCard {
     position: absolute;
-    right: -4rem;
-    top: -3rem;
-    width: 15rem;
-    height: 14rem;
-    background-color: var(--white);
+    width: 50%;
+    height: 100%;
     padding: 1rem;
+    background-color: var(--white);
+    bottom: -6rem;
+    left: -.5rem;
     border-radius: var(--xs);
-    display: flex;
-    flex-direction: column;
 
-    h2, p, span {
+    h3, p {
       font-size: var(--sm);
       color: rgba(0, 0, 0, 0.5);
       font-weight: bold;
+      width: 250px;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
-
-    }
-
-    span {
-      text-transform: uppercase;
     }
   }
 
   .skeleton {
     overflow: hidden;
   }
-
-  .avatar {
-    border-radius: 50%;
-  }
 }
 
 .box {
-  width: 50%;
+  position: absolute;
+  right: 1rem;
+  display: flex;
+  flex-direction: column;
 }
-
