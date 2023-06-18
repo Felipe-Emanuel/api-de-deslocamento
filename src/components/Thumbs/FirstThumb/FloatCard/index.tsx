@@ -2,11 +2,11 @@ import { useStateContext } from "@/src/data/hooks/useStateContext";
 import styles from "./FloatCard.module.scss";
 import Skeleton from "@mui/material/Skeleton";
 import Stack from "@mui/material/Stack";
-import { Card } from "@/src/data/contexts/StateContext";
+import { CardType } from "@/src/data/contexts/StateContext";
 import { Button } from "@mui/material";
 
 interface FloatCardProps {
-  data: Card[];
+  data: CardType[];
   handleFormSubmit: () => void;
 }
 

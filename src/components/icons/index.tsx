@@ -25,7 +25,7 @@ export const VehicleIcon = ({state}: StateTypeProps) => <DirectionsCarIcon color
 export const HomePageIcon = ({pageState}: StatePageTypeProps) => <HomeIcon color={pageState === "início" ? "secondary" : 'inherit'} />
 export const ExploreIcon = ({pageState}: StatePageTypeProps) => <TravelExploreIcon color={pageState === "explorar" ? "secondary" : 'inherit'} />
 export const RegisterIcon = ({pageState}: StatePageTypeProps) => <HowToRegIcon color={pageState === "cadastrar" ? "secondary" : 'inherit'} />
-export const MyLastSeenIcon = ({pageState}: StatePageTypeProps) => <PreviewIcon color={pageState === "meus vistos" ? "secondary" : 'inherit'} />
+export const MyLastSeenIcon = ({pageState}: StatePageTypeProps) => <PreviewIcon color={pageState === "meus registros" ? "secondary" : 'inherit'} />
 
 
 

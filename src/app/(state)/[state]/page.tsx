@@ -1,11 +1,25 @@
 'use client';
+import { Explore } from "@/src/components/Explore";
+import { Register } from "@/src/components/Register";
+import { Container } from "@/src/components/containers/Container";
+import { Section } from "@/src/components/containers/Section";
+import { usePageStateContext } from "@/src/data/hooks/usePageStateContext";
 
-import { useStateContext } from "@/src/data/hooks/useStateContext";
+const pageStates = {
+  início: <Explore />,
+  explorar: <Explore />,
+  cadastrar: <Register />,
+  "meus registros": <Register />
+}
 
 export default function statePage () {
-  const { state } = useStateContext()
+  const { pageState } = usePageStateContext()
 
   return (
-    <h1>página de {state}</h1>
+    <Container>
+      <Section id="main-section">
+        {pageStates[pageState!]}
+      </Section>
+    </Container>
   )
 }

@@ -16,21 +16,35 @@ interface StateContextProvider {
   children: ReactNode;
 }
 
-export type Card = {
-  nome: string;
+export type CardType = {
+  id?: string | number;
+  numeroDocumento: string;
+  tipoDocumento: string;
+  logradouro: string;
+  numero: string;
+  bairro: string;
   cidade: string;
   uf: string;
-  bairro: string;
+  nome: string;
   numeroHabilitacao: string;
   catergoriaHabilitacao: string;
-  checkList: string;
-  kmInicial: string;
-  motivo: string;
-  observacao: string;
-  marcaModelo: string;
+  vencimentoHabilitacao: string;
+  kmInicial: number,
+  kmFinal: number,
+  inicioDeslocamento: string,
+  fimDeslocamento: string,
+  checkList: string,
+  motivo: string,
+  observacao: string,
+  idCondutor: number,
+  idVeiculo: number,
+  idCliente: number
   placa: string;
-  kmAtual: string;
+  marcaModelo: string;
+  anoFabricacao: number;
+  kmAtual: number;
 }
+
 
 export type FiltredItem = {
   label: string;
@@ -40,10 +54,10 @@ export type FiltredItem = {
 type StateContextType = {
   outHome: boolean,
   state: StateType,
-  data: Card[]
+  data: CardType[]
   filteredData: FiltredItem[],
   setState: (state: StateType) => void;
-  setData: Dispatch<SetStateAction<Card[]>>
+  setData: Dispatch<SetStateAction<CardType[]>>
 };
 
 export const StateContext = createContext<StateContextType>({
@@ -71,7 +85,7 @@ export const StateContextProvider = ({ children }: StateContextProvider) => {
   const initialState = outHome ? routes[asPath] : "cliente"
 
   const [state, setState] = useState<StateType>(initialState);
-  const [data, setData] = useState<Card[]>([]);
+  const [data, setData] = useState<CardType[]>([]);
   const [filteredData, setFilteredData] = useState<FiltredItem[]>([
     {label: '', id: ''}
   ]);

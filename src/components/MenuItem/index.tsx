@@ -78,7 +78,7 @@ export function MenuItem() {
       icon: <icon.RegisterIcon pageState={pageState} />,
     },
     {
-      label: "meus vistos",
+      label: "meus registros",
       icon: <icon.MyLastSeenIcon pageState={pageState} />,
     },
   ];

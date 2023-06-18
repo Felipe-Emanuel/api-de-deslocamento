@@ -18,7 +18,7 @@ export function BoxMenu() {
   const subtitlePages = {
     explorar: `Explore nosso catálogo de ${state} de forma eficiente!`,
     cadastrar: "Cadastre-se e torne-se um mebro da comunidade!",
-    "meus vistos": "Visualize e gerencie seus registros de deslocamento!",
+    "meus registros": "Visualize e gerencie seus registros de deslocamento!",
     início: "Não é o que busco no momento...",
   };
 

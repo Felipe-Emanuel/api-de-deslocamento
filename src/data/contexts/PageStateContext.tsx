@@ -5,7 +5,7 @@ export type StatePageType =
   | "início"
   | "explorar"
   | "cadastrar"
-  | "meus vistos"
+  | "meus registros"
   | undefined;
 
 interface PageStateContextProviderProps {
