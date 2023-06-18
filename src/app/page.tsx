@@ -1,11 +1,9 @@
-"use client";
 import styles from "./Home.module.scss";
-import { Container } from "../components/containers/Container";
-import { Section } from "../components/containers/Section";
-import { InfoSection } from "../components/InfoSection";
+import { Section } from "./components/containers/Section";
+import { Container } from "./components/containers/Container";
+import { InfoSection } from "./components/InfoSection";
 
 export default function Home() {
-
   return (
     <>
       <Container>

@@ -1,0 +1,41 @@
+.container {
+  position: relative;
+  height: fit-content;
+  padding: 6rem;
+  width: 100vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  background-image: url(../../../../public/images/mainBanner.png);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  pointer-events: none;
+}
+
+
+@media (max-width: 500px) {
+  .container {
+    width: fit-content;
+  }
+}
+
+@media (max-width: 1450px) {
+  .container {
+    justify-content: space-between;
+    padding: 1rem .5rem;
+  }
+}
+
+@media (max-width: 990px) {
+  .container {
+    flex-direction: column;
+  }
+}

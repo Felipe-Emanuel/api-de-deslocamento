@@ -1,9 +1,10 @@
 'use client';
-import { Explore } from "@/src/components/Explore";
-import { Register } from "@/src/components/Register";
-import { Container } from "@/src/components/containers/Container";
-import { Section } from "@/src/components/containers/Section";
-import { usePageStateContext } from "@/src/data/hooks/usePageStateContext";
+import { Explore } from "@components/Explore";
+import { Register } from "@components/Register";
+import { Container } from "@components/containers/Container";
+import { Section } from "@components/containers/Section";
+import { usePageStateContext } from "@hooks/usePageStateContext";
+
 
 const pageStates = {
   início: <Explore />,

@@ -1,9 +1,9 @@
 'use client';
 import './globals.scss'
-import { StateContextProvider } from '../data/contexts/StateContext'
-import { Header } from '../components/Header'
-import { PageStateContextProvider } from '../data/contexts/PageStateContext';
+import { Header } from './components/Header';
 import { ToastContainer } from 'react-toastify';
+import { StateContextProvider } from './data/contexts/StateContext';
+import { PageStateContextProvider } from './data/contexts/PageStateContext';
 
 export default function RootLayout({
   children,
