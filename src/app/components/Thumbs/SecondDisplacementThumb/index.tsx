@@ -15,7 +15,7 @@ export function SecondDisplacementThumb() {
   const { Início, motivo, observação } = displacement;
 
   const displacementTitle =
-    Início === "" ? "Início do Deslocamento" : capitalizeName(Início);
+    Início === "" ? "Início do Deslocamento" : Início;
   const userObservation =
     observação === "" ? "Observação" : capitalizeName(observação);
   const useReason = motivo === "" ? "Número da licença" : motivo;

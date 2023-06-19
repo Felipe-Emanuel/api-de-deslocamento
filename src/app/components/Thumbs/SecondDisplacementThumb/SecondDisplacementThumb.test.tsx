@@ -8,15 +8,12 @@ describe("<SecondDisplacementThumb />", () => {
     expect(container).toBeInTheDocument();
   });
 
-  it("should apply correctly 'home Displacement' value", async () => {
-    const { getByLabelText } = render(<SecondDisplacementThumb />);
+  it("should apply correctly 'date' type", async () => {
+    const { getByTestId } = render(<SecondDisplacementThumb />);
 
-    const input = getByLabelText(/Início/i) as HTMLInputElement;
-    fireEvent.change(input, { target: { value: "Rio de Janeiro" } });
-
-    await waitFor(() => {
-      expect(input.value).toBe("Rio de Janeiro");
-    });
+    const divInput = getByTestId(/Início/i) as HTMLInputElement;
+    const input = divInput.querySelector("input")
+    expect(input?.getAttribute("type")).toBe("date")
   });
 
   it("should apply correctly 'reason' value", async () => {

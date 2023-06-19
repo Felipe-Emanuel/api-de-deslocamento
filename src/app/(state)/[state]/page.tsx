@@ -1,10 +1,9 @@
 'use client';
 import { Explore } from "@components/Explore";
+import { Section } from "@components/containers/Section";
 import { Register } from "@components/Register";
 import { Container } from "@components/containers/Container";
-import { Section } from "@components/containers/Section";
 import { usePageStateContext } from "@hooks/usePageStateContext";
-
 
 const pageStates = {
   início: <Explore />,

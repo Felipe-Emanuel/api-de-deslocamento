@@ -17,7 +17,7 @@ import {
 
 type statesButtonType = {
   label: string;
-  icon: string | ReactElement<any, string | JSXElementConstructor<any>>;
+  icon: string | ReactElement<JSXElementConstructor<any>>;
 };
 
 export function MenuItem() {
@@ -84,11 +84,12 @@ export function MenuItem() {
   ];
 
   const paths = outHome ? pageStates : states;
+  const initialValue = outHome ? 'explorar' : 'cliente'
 
   return (
     <Box sx={{ width: "100%" }}>
       <Tabs
-        value={value  || 'cliente'}
+        value={value || initialValue}
         onChange={handleChange}
         textColor="inherit"
         indicatorColor="secondary"

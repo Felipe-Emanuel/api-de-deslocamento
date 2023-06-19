@@ -30,14 +30,11 @@ describe("<SecondVehicleThumb />", () => {
     });
   });
 
-  it("should apply correctly 'year Manufacture' value", async () => {
-    const { getByLabelText } = render(<SecondVehicleThumb />);
+  it("should apply 'date' type", async () => {
+    const { getByTestId } = render(<SecondVehicleThumb />);
 
-    const input = getByLabelText(/fabricado/i) as HTMLInputElement;
-    fireEvent.change(input, { target: { value: "1984" } });
-
-    await waitFor(() => {
-      expect(input.value).toBe("1984");
-    });
+    const divInput = getByTestId(/fabricado/i) as HTMLInputElement;
+    const input = divInput.querySelector("input")
+    expect(input?.getAttribute('type')).toBe('date');
   });
 });

@@ -17,8 +17,8 @@ export function SecondVehicleThumb() {
   const displacement =
     licença === "" ? "Placa do carro" : capitalizeName(licença);
   const useryearManufacture =
-    fabricado === "" ? "Ano de Fabricação" : capitalizeName(fabricado);
-  const usemodel = modelo === "" ? "Modelo do Carro" : modelo;
+    fabricado === "" ? "Ano de Fabricação" : fabricado;
+  const usemodel = modelo === "" ? "Modelo do Carro" : capitalizeName(modelo);;
 
   return (
     <div className={styles.thumb}>

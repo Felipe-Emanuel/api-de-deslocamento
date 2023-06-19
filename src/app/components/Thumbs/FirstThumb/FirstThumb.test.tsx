@@ -47,15 +47,11 @@ describe("<FirstThumb/>", () => {
   })
 
   it("should handle form submit", async () => {
-    const { findByLabelText, findByText } = render(<FirstThumb />);
+    const { findByLabelText } = render(<FirstThumb />);
 
     const input = await findByLabelText("Cliente");
 
     fireEvent.change(input, { target: { value: "Option 1" } });
-
-    const submitButton = await findByText("Buscar Cliente");
-
-    fireEvent.click(submitButton);
     await waitFor(() => {
       expect(setData).toHaveBeenCalledWith(mockedCard);
     });

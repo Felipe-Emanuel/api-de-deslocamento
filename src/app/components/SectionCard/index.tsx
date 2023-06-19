@@ -19,7 +19,7 @@ export function SectionCard({ title, isLastObject }: SectionCardProps) {
   const { state, data } = useStateContext();
   const [idActive, setIdActive] = useState("");
 
-  if (!data) return null;
+  if (data.length === 0) return null; // tratar tela sem dados
 
   const filteredData = isLastObject ? data?.slice(0, 3) : data?.slice(3);
 

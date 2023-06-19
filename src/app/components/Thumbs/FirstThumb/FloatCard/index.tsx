@@ -1,23 +1,22 @@
 import Stack from "@mui/material/Stack";
 import styles from "./FloatCard.module.scss";
 import Skeleton from "@mui/material/Skeleton";
-import { Button } from "@mui/material";
 import { CardType } from "@contexts/StateContext";
 import { useStateContext } from "@hooks/useStateContext";
 
 interface FloatCardProps {
   data: CardType[];
-  handleFormSubmit: () => void;
 }
 
-export function FloatCard({ data = [], handleFormSubmit }: FloatCardProps) {
+export function FloatCard({ data = [] }: FloatCardProps) {
   const { state } = useStateContext();
-  const SkeletonWidthSizes = [150, 215, 120, 90, 185];
+  const SkeletonWidthSizes = [150, 215, 120, 90, 185, 215];
 
   const renderMessage = () => {
     if (data.length === 0) {
       return <h2>Seja nosso primeiro {state} cadastrado!</h2>;
     }
+
     return <h2>Nosso último {state} cadastrado!</h2>;
   };
 
@@ -50,9 +49,6 @@ export function FloatCard({ data = [], handleFormSubmit }: FloatCardProps) {
           <Skeleton key={i} variant="rounded" width={size} height={10} />
         ))}
       </Stack>
-      <Button variant="contained" color="secondary" onClick={handleFormSubmit}>
-        Buscar {state}
-      </Button>
     </div>
   );
 }

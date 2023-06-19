@@ -52,21 +52,25 @@ export type FiltredItem = {
 }
 
 type StateContextType = {
+  hasSearched: boolean,
   outHome: boolean,
   state: StateType,
   data: CardType[]
   filteredData: FiltredItem[],
   setState: (state: StateType) => void;
+  setHasSearched: Dispatch<SetStateAction<boolean>>;
   setData: Dispatch<SetStateAction<CardType[]>>
 };
 
 export const StateContext = createContext<StateContextType>({
+  setHasSearched: () => {},
   setState: () => {},
   setData: () => {},
   state: "cliente",
   filteredData: [],
   data: [],
   outHome: false,
+  hasSearched: false,
 });
 
 
@@ -84,6 +88,7 @@ export const StateContextProvider = ({ children }: StateContextProvider) => {
 
   const initialState = outHome ? routes[asPath] : "cliente"
 
+  const [hasSearched, setHasSearched] = useState(false);
   const [state, setState] = useState<StateType>(initialState);
   const [data, setData] = useState<CardType[]>([]);
   const [filteredData, setFilteredData] = useState<FiltredItem[]>([
@@ -131,8 +136,10 @@ export const StateContextProvider = ({ children }: StateContextProvider) => {
       filteredData,
       data,
       outHome,
+      hasSearched,
       setState,
       setData,
+      setHasSearched,
     }}
   >
     {children}
