@@ -1,35 +1,35 @@
 export type Displacement = {
-  id: number,
-  kmInicial: number,
-  kmFinal: number,
+  id: number | undefined,
+  kmInicial: number | undefined,
+  kmFinal: number | undefined,
   inicioDeslocamento: Date,
   fimDeslocamento: Date,
-  checkList: string,
-  motivo: string,
-  observacao: string,
-  idCondutor: number,
-  idVeiculo: number,
-  idCliente: number
+  checkList: string | undefined,
+  motivo: string | undefined,
+  observacao: string | undefined,
+  idCondutor: number | undefined,
+  idVeiculo: number | undefined,
+  idCliente: number | undefined
 }
 
 export type NewDisplacement = {
-  kmInicial: number,
+  kmInicial: number | undefined,
   inicioDeslocamento: Date,
-  checkList: string,
-  motivo: string,
-  observacao: string,
-  idCondutor: number,
-  idVeiculo: number,
-  idCliente: number
+  checkList: string | undefined,
+  motivo: string | undefined,
+  observacao: string | undefined,
+  idCondutor: string | undefined | number,
+  idVeiculo: string | undefined | number,
+  idCliente: string | undefined | number
 }
 
 export type UpdatedDisplacement = {
-  id: number,
-  kmFinal: number,
-  fimDeslocamento: Date,
-  observacao: string
+  id: number | undefined,
+  quilometro_final: number | undefined,
+  deslocamento_final: string | undefined,
+  observação: string | undefined
 }
 
 export type DeleteDisplacement = {
-  id: number,
+  id: number | undefined,
 }

@@ -1,9 +1,10 @@
 "use client";
 
 export const useLocalStorage = () => {
+  const STORAGE_KEY = "DESLOCAMENTO:";
+
   if (typeof window === 'undefined') return;
 
-  const STORAGE_KEY = "DESLOCAMENTO:";
 
   const getLocalStorage = (key: string) => {
     const data = window.localStorage.getItem(`${STORAGE_KEY}${key}`);

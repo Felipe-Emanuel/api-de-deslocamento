@@ -22,7 +22,6 @@ export default function RootLayout({
         rtl={false}
         pauseOnFocusLoss
         draggable
-        pauseOnHover
         theme="dark"
       />
         <StateContextProvider>

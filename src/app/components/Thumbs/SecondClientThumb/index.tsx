@@ -9,16 +9,16 @@ import { useStateContext } from "@hooks/useStateContext";
 
 export function SecondClientThumb() {
   const { capitalizeName } = Normalize();
-  const { client, handleChange } = useInput();
+  const { client } = useInput() || {};
   const { state } = useStateContext();
 
-  const { cidade, nome, número, uf } = client || {};
+  if(client === undefined) return null;
 
-  const userName = nome === "" ? "Seu nome" : capitalizeName(nome);
-  const userNity = cidade === "" ? "Sua Cidade" : capitalizeName(cidade);
+  const { cidade, nome, uf } = client!;
+
+  const userName = nome === "" ? "Seu nome" : capitalizeName(nome || "");
+  const userNity = cidade === "" ? "Sua Cidade" : capitalizeName(cidade || "");
   const userUF = uf === "" ? "UF" : uf;
-  const adressNumber =
-    número === "" ? "Número residencial" : capitalizeName(número);
 
   return (
     <div className={styles.thumb}>
@@ -31,14 +31,13 @@ export function SecondClientThumb() {
           <p>{userNity}</p>
           <span>{userUF}</span>
         </div>
-        <p>{adressNumber}</p>
         <Stack spacing={0} className={styles.skeleton}>
           <Skeleton variant="rounded" width={150} height={10} />
           <Skeleton variant="rounded" width={180} height={10} />
         </Stack>
       </div>
-      <h2>Novo Cadastro de {state}</h2>
-      <FormInput object={client} onChange={handleChange} />
+      <h2>Novo Cadastro de {capitalizeName(state!)}</h2>
+      <FormInput />
     </div>
   );
 }

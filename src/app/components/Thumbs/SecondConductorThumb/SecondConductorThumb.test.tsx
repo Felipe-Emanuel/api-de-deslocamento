@@ -1,45 +1,41 @@
-import { fireEvent, render, waitFor } from "@testing-library/react";
+import { render } from "@testing-library/react";
 import { SecondConductorThumb } from ".";
 
+jest.mock("@hooks/useStateContext", () => ({
+  __esModule: true,
+  default: jest.fn(),
+  useStateContext: jest.fn().mockReturnValue({
+    state: "condutor",
+    value: {
+      condutor: "condutor",
+      habilitação: 123,
+      categoria: "A",
+    }
+  })
+}))
+
 describe("<SecondConductorThumb />", () => {
+  afterAll(() => jest.clearAllMocks());
+
   it("should render without errors", () => {
-    const { container } = render(<SecondConductorThumb />);
-
-    expect(container).toBeInTheDocument();
+    const { getByTestId } = render(<SecondConductorThumb />);
+    const thumbElement = getByTestId("second-conductor-thumb");
+    expect(thumbElement).toBeInTheDocument();
   });
 
-  it("should apply correctly value", async () => {
-    const { getByLabelText } = render(<SecondConductorThumb />);
+  it("should display the correct name and license", () => {
+    const { getByTestId } = render(<SecondConductorThumb />);
+    const userNameElement = getByTestId("user-name");
+    const userLicenseElement = getByTestId("user-license");
 
-    const input = getByLabelText(/condutor/i) as HTMLInputElement;
-    fireEvent.change(input, { target: { value: "john Doe" } });
-
-    await waitFor(() => {
-      expect(input.value).toBe("john Doe");
-    });
+    expect(userNameElement.textContent).toBe("Condutor");
+    expect(userLicenseElement.textContent).toBe("123");
   });
 
-  it("should apply correctly value", async () => {
-    const { getByLabelText } = render(<SecondConductorThumb />);
+  it("should display the correct category qualification", () => {
+    const { getByTestId } = render(<SecondConductorThumb />);
+    const userCategoryQualificationElement = getByTestId("user-category-qualification");
 
-    const input = getByLabelText(
-      /Categoria/i
-    ) as HTMLInputElement;
-    fireEvent.change(input, { target: { value: "A" } });
-
-    await waitFor(() => {
-      expect(input.value).toBe("A");
-    });
-  });
-
-  it("should apply correctly value", async () => {
-    const { getByLabelText } = render(<SecondConductorThumb />);
-
-    const input = getByLabelText(/habilitação/i) as HTMLInputElement;
-    fireEvent.change(input, { target: { value: "123" } });
-
-    await waitFor(() => {
-      expect(input.value).toBe("123");
-    });
+    expect(userCategoryQualificationElement.textContent).toBe("A");
   });
 });

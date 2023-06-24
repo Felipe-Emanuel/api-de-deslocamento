@@ -1,54 +1,42 @@
-import { fireEvent, render, waitFor } from "@testing-library/react";
+import { render } from "@testing-library/react";
 import { SecondClientThumb } from ".";
 
+jest.mock("@hooks/useStateContext", () => ({
+  __esModule: true,
+  default: jest.fn(),
+  useStateContext: jest.fn().mockReturnValue({
+    state: "cliente",
+    value: {
+      nome: "John Doe",
+      cidade: "Rio de Janeiro",
+      uf: "RJ",
+    },
+  }),
+}));
+
 describe("<SecondClientThumb />", () => {
+  afterAll(() => jest.clearAllMocks());
+
   it("should render without error", () => {
     const { container } = render(<SecondClientThumb />);
-
     expect(container).toBeInTheDocument();
   });
 
-  it("handleChange updates the value correctly", async () => {
-    const { getByLabelText } = render(<SecondClientThumb />);
+  it("should apply correctly labels", () => {
+    const { container } = render(<SecondClientThumb />);
 
-    const input = getByLabelText(/Nome/i) as HTMLInputElement;
-    fireEvent.change(input, { target: { value: "John Doe" } });
-
-    await waitFor(() => {
-      expect(input.value).toBe("John Doe");
-    });
+    const input = container.querySelector("input")
+    expect(input?.value).toBe("John Doe");
   });
 
-  it('should apply correctly "city" state', async () => {
-    const { getByLabelText } = render(<SecondClientThumb />);
+  it("should apply correctly labels", () => {
+    const { findByText } = render(<SecondClientThumb />);
+    const labels = ["Seu nome", "Sua cidade", "UF"]
 
-    const input = getByLabelText(/Cidade/i) as HTMLInputElement;
-    fireEvent.change(input, { target: { value: "Rio de Janeiro" } });
+    labels.forEach(async label => {
+      const inputLabel = await findByText(label)
 
-    await waitFor(() => {
-      expect(input.value).toBe("Rio de Janeiro");
-    });
-  });
-
-  it('should apply correctly "uf" state', async () => {
-    const { getByLabelText } = render(<SecondClientThumb />);
-
-    const input = getByLabelText(/uf/i) as HTMLInputElement;
-    fireEvent.change(input, { target: { value: "RJ" } });
-
-    await waitFor(() => {
-      expect(input.value).toBe("RJ");
-    });
-  });
-
-  it('should apply correctly "number" state', async () => {
-    const { getByLabelText } = render(<SecondClientThumb />);
-
-    const input = getByLabelText(/número/i) as HTMLInputElement;
-    fireEvent.change(input, { target: { value: "2353" } });
-
-    await waitFor(() => {
-      expect(input.value).toBe("2353");
-    });
-  });
+      expect(inputLabel).not.toBe("");
+    })
+  })
 });

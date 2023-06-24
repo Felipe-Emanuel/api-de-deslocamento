@@ -15,9 +15,10 @@ const routes = {
 
 interface LinkButtonProps {
   label?: string;
+  onClick?: () => void;
 }
 
-export function LinkButton({ label }: LinkButtonProps) {
+export function LinkButton({ label, ...props }: LinkButtonProps) {
   const { state, setState } = useStateContext();
   const { pageState } = usePageStateContext();
   const asPath = usePathname();
@@ -30,7 +31,7 @@ export function LinkButton({ label }: LinkButtonProps) {
   }, [asPath])
 
   return (
-    <Link href={backHome ? "/" : routes[state!]}>
+    <Link {...props} href={backHome ? "/" : routes[state!]}>
       {asPath !== "/" && !backHome ? null : (
         <Button variant="contained" color="secondary">
           {label ? label : (

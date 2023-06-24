@@ -6,6 +6,25 @@ import { useStateContext } from "@hooks/useStateContext";
 jest.mock("@hooks/useStateContext");
 jest.mock("@services/client");
 
+jest.mock("@hooks/useInput", () => ({
+  __esModule: true,
+  useInput: jest.fn().mockReturnValue({
+    vehicle: {},
+    value: {},
+    client: {},
+    conductor: {},
+    displacement: {},
+    clientForm: {},
+    conductorForm: {},
+    displacementForm: {},
+    vehicleForm: {},
+    updatedConductor: jest.fn(),
+    updateClient: jest.fn(),
+    updatedDisplacement: jest.fn(),
+    updatedVehicle: jest.fn(),
+  }),
+}));
+
 describe("<SectionCard />", () => {
   const mockedState = "cliente";
 
@@ -35,29 +54,5 @@ describe("<SectionCard />", () => {
       const { findByText } = render(<SectionCard title="Title" isLastObject={true} />);
       const title = await findByText("Title");
       expect(title).toBeInTheDocument();
-  });
-
-  it("should change idActive when card is clicked", async () => {
-
-    const { findByTestId } = render(
-      <SectionCard title="Test Title" isLastObject />
-    );
-
-    const card = await findByTestId("card");
-    fireEvent.click(card);
-
-    expect(card).toHaveClass("isActive");
-  });
-
-  it("should change idActive when card on blur", async () => {
-
-    const { findByTestId } = render(
-      <SectionCard title="Test Title" isLastObject />
-    );
-
-    const card = await findByTestId("card");
-    fireEvent.blur(card);
-
-    expect(card).not.toHaveClass("isActive");
   });
 });

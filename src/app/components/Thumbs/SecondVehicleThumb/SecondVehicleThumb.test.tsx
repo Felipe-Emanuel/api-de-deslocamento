@@ -1,40 +1,41 @@
-import { fireEvent, render, waitFor } from "@testing-library/react";
+import { render } from "@testing-library/react";
 import { SecondVehicleThumb } from ".";
 
+jest.mock("@hooks/useStateContext", () => ({
+  __esModule: true,
+  default: jest.fn(),
+  useStateContext: jest.fn().mockReturnValue({
+    state: "veículo",
+    value: {
+      placa: "abc-123",
+      modelo: "tesla",
+      fabricado: "2023",
+    },
+  }),
+}));
+
 describe("<SecondVehicleThumb />", () => {
+  afterAll(() => jest.clearAllMocks());
+
   it("should render without errors", () => {
     const { container } = render(<SecondVehicleThumb />);
 
     expect(container).toBeInTheDocument();
   });
 
-  it("should apply correctly 'license' value", async () => {
-    const { getByLabelText } = render(<SecondVehicleThumb />);
-
-    const input = getByLabelText(/licença/i) as HTMLInputElement;
-    fireEvent.change(input, { target: { value: "abc-123" } });
-
-    await waitFor(() => {
-      expect(input.value).toBe("abc-123");
-    });
-  });
-
-  it("should apply correctly 'model' value", async () => {
-    const { getByLabelText } = render(<SecondVehicleThumb />);
-
-    const input = getByLabelText(/modelo/i) as HTMLInputElement;
-    fireEvent.change(input, { target: { value: "Fusca" } });
-
-    await waitFor(() => {
-      expect(input.value).toBe("Fusca");
-    });
-  });
-
-  it("should apply 'date' type", async () => {
+  it("should display the correct 'placa' and 'modelo'", () => {
     const { getByTestId } = render(<SecondVehicleThumb />);
+    const carModel = getByTestId("carModel");
+    const license = getByTestId("license");
 
-    const divInput = getByTestId(/fabricado/i) as HTMLInputElement;
-    const input = divInput.querySelector("input")
-    expect(input?.getAttribute('type')).toBe('date');
+    expect(carModel.textContent).toBe("Tesla");
+    expect(license.textContent).toBe("Abc-123");
+  });
+
+  it("should display the correct date", () => {
+    const { getByTestId } = render(<SecondVehicleThumb />);
+    const carYearManufacture = getByTestId("carYearManufacture");
+
+    expect(carYearManufacture.textContent).toBe("2023");
   });
 });

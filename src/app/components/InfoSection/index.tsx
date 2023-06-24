@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import styles from "./InfoSection.module.scss";
 import ParallaxTilt from "react-parallax-tilt";
 import { Thumbs } from "@/src/models/thumbs";
@@ -8,11 +8,13 @@ import { FirstThumb } from "../Thumbs/FirstThumb";
 import { useStateContext } from "@hooks/useStateContext";
 import { SecondClientThumb } from "../Thumbs/SecondClientThumb";
 import { SecondVehicleThumb } from "../Thumbs/SecondVehicleThumb";
+import { usePageStateContext } from "@hooks/usePageStateContext";
 import { SecondConductorThumb } from "../Thumbs/SecondConductorThumb";
 import { SecondDisplacementThumb } from "../Thumbs/SecondDisplacementThumb";
 
 export function InfoSection() {
   const { state } = useStateContext();
+  const { setPageState } = usePageStateContext();
 
   const firstTitle = `Busque um ${state} com um filtro eficiente!`;
 
@@ -60,14 +62,17 @@ export function InfoSection() {
           className={styles.thumb}
         >
           <Suspense fallback={<p>carregando...</p>}>
-          {thumbs[state!].secondThumb}
-                    </Suspense>
+            {thumbs[state!].secondThumb}
+          </Suspense>
         </ParallaxTilt>
         <div className={styles.thumbInfo}>
           <h2 data-testid="secondTitle">{thumbs[state!].secondTitle}</h2>
           <div className={styles.thumbButton}>
             <p>Acesse e continue seu cadastro agora mesmo!</p>
-            <LinkButton label="Continuar cadastro" />
+            <LinkButton
+              label="Continuar cadastro"
+              onClick={() => setPageState("cadastrar")}
+            />
           </div>
         </div>
       </div>

@@ -1,36 +1,36 @@
 export type Client = {
-  id?: string;
-  numeroDocumento: string;
-  tipoDocumento: string;
-  nome: string;
-  logradouro: string;
-  numero: string;
-  bairro: string;
-  cidade: string;
-  uf: string;
+  id?: string | undefined;
+  numeroDocumento: string | undefined;
+  tipoDocumento: string | undefined;
+  nome: string | undefined;
+  logradouro: string | undefined;
+  numero: string | undefined;
+  bairro: string | undefined;
+  cidade: string | undefined;
+  uf: string | undefined;
 };
 
 export type NewClient = {
-  numeroDocumento: string;
-  tipoDocumento: string;
-  nome: string;
-  logradouro: string;
-  numero: string;
-  bairro: string;
-  cidade: string;
-  uf: string;
+  numeroDocumento: number | undefined;
+  tipoDocumento: string | undefined;
+  nome: string | undefined;
+  logradouro: string | undefined;
+  numero: string | undefined;
+  bairro: string | undefined;
+  cidade: string | undefined;
+  uf: string | undefined;
 };
 
 export type UpdateClient = {
-  id: string;
-  nome: string;
-  logradouro: string;
-  numero: string;
-  bairro: string;
-  cidade: string;
-  uf: string;
+  id: string | undefined;
+  nome: string | undefined;
+  logradouro: string | undefined;
+  número: string | undefined;
+  bairro: string | undefined;
+  cidade: string | undefined;
+  uf: string | undefined;
 };
 
 export type DeleteClient = {
-  id: string;
+  id: string | undefined;
 };

@@ -9,31 +9,33 @@ import { useStateContext } from "@hooks/useStateContext";
 
 export function SecondDisplacementThumb() {
   const { capitalizeName } = Normalize();
-  const { displacement, handleChange } = useInput();
+  const { displacement } = useInput() || {};
   const { state } = useStateContext();
 
-  const { Início, motivo, observação } = displacement;
+  if(displacement === undefined) return null;
 
-  const displacementTitle =
-    Início === "" ? "Início do Deslocamento" : Início;
+  const { controle, motivo, observação } = displacement;
+
+  const displacementCheckList =
+    controle === "" ? "Algum checklist?" : controle;
   const userObservation =
-    observação === "" ? "Observação" : capitalizeName(observação);
-  const useReason = motivo === "" ? "Número da licença" : motivo;
+    observação === "" ? "Observação" : capitalizeName(observação || "");
+  const userReason = motivo === "" ? "Motivo do deslocamento" : motivo;
 
   return (
     <div className={styles.thumb}>
       <h2>Simule um registro de {state} prévio!</h2>
       <div className={styles.floatCard}>
         <Stack spacing={2} className={styles.skeleton}>
-          <h3>{displacementTitle}</h3>
-          <p>{useReason}</p>
-          <p>{userObservation}</p>
+          <p data-testid="userReason">{userReason}</p>
+          <p data-testid="userObservation">{userObservation}</p>
+          <h3 data-testid="displacementCheckList">{displacementCheckList}</h3>
           <Skeleton variant="rounded" width={150} height={10} />
           <Skeleton variant="rounded" width={180} height={10} />
         </Stack>
       </div>
       <div className={styles.formInput}>
-        <FormInput object={displacement} onChange={handleChange} />
+        <FormInput />
       </div>
     </div>
   );

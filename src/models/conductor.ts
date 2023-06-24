@@ -1,24 +1,24 @@
 export type Conductor = {
-  id: number;
-  nome: string;
-  numeroHabilitacao: string;
-  catergoriaHabilitacao: string;
+  id: number | undefined;
+  nome: string | undefined;
+  numeroHabilitacao: string | undefined;
+  catergoriaHabilitacao: string | undefined;
   vencimentoHabilitacao: Date;
 };
 
 export type NewConductor = {
-  nome: string;
-  numeroHabilitacao: string;
-  categoriaHabilitacao: string;
+  nome: string | undefined;
+  numeroHabilitacao: string | undefined;
+  categoriaHabilitacao: string | undefined;
   vencimentoHabilitacao: Date;
 };
 
-export type UpdateConductor = {
-  id: number;
-  categoriaHabilitacao: string;
-  vencimentoHabilitacao: Date;
+export type UpdatedConductor = {
+  id: number | undefined;
+  habilitação: string | undefined;
+  vencimento: string | undefined;
 };
 
 export type DeleteConductor = {
-  id: number;
+  id: number | undefined;
 };

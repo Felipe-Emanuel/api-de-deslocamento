@@ -29,8 +29,18 @@ export const getDataById = async (path: string, id: string) => {
 };
 
 export const postData = async (path: string, body: unknown) => {
+  const setRoute = () =>{
+    if (path === "deslocamento") {
+      return 'deslocamento/IniciarDeslocamento'
+    }
+    if (path === "veículo") {
+      return 'veiculo'
+    }
+
+    return path
+  }
   try {
-    const resp = await api.post(`/${path}`, body);
+    const resp = await api.post(`/${setRoute()}`, body);
     const { data } = resp;
 
     toast.success("Sucesso")
@@ -42,8 +52,18 @@ export const postData = async (path: string, body: unknown) => {
 };
 
 export const putData = async (path: string, id: string, body: unknown) => {
+  const setRoute = () =>{
+    if (path === "deslocamento") {
+      return `deslocamento/${id}/EncerrarDeslocamento`
+    }
+    if (path === "veículo") {
+      return `veiculo/${id}`
+    }
+    return `${path}/${id}`
+  }
+
   try {
-    const resp = await api.put(`/${path}/${id}`, body);
+    const resp = await api.put(`/${setRoute()}`, body);
     const { data } = resp;
 
     toast.success("Sucesso")
@@ -55,8 +75,17 @@ export const putData = async (path: string, id: string, body: unknown) => {
 };
 
 export const deleteData = async (path: string, id: string) => {
+  const setRoute = () => {
+    if (path === "veículo") {
+      console.log(path);
+      return `veiculo`
+    }
+
+    return path
+  }
+
   try {
-    await api.delete(`/${path}/${id}`, {
+    await api.delete(`/${setRoute()}/${id}`, {
       data: {
         id
       }

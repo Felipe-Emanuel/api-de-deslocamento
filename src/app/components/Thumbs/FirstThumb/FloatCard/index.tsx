@@ -1,16 +1,17 @@
 import Stack from "@mui/material/Stack";
 import styles from "./FloatCard.module.scss";
 import Skeleton from "@mui/material/Skeleton";
-import { CardType } from "@contexts/StateContext";
 import { useStateContext } from "@hooks/useStateContext";
+import { ItemWithType } from "@/src/app/data/contexts/PageStateContext";
 
 interface FloatCardProps {
-  data: CardType[];
+  data: ItemWithType[] | null;
 }
 
 export function FloatCard({ data = [] }: FloatCardProps) {
   const { state } = useStateContext();
   const SkeletonWidthSizes = [150, 215, 120, 90, 185, 215];
+  if(!data) return null;
 
   const renderMessage = () => {
     if (data.length === 0) {

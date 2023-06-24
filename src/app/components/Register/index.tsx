@@ -1,17 +1,23 @@
-'use client';
-import styles from "./Register.module.scss";
+import { RegisterClient } from "./RegisterClient";
+import { RegisterVehicle } from "./RegisterVehicle";
 import { useStateContext } from "@hooks/useStateContext";
+import { RegisterConductor } from "./RegisterConductor";
+import { RegisterDisplacement } from "./RegisterDisplacement";
 
-interface RegisterProps{
-}
+const states: { [key: string]: JSX.Element } = {
+  cliente: <RegisterClient />,
+  deslocamento: <RegisterDisplacement />,
+  condutor: <RegisterConductor />,
+  veículo: <RegisterVehicle />,
+};
 
-export function Register({}: RegisterProps) {
-  const { state } = useStateContext()
+export function Register() {
+  const { state } = useStateContext();
 
   return (
-    <div className={styles.register}>
-      <h1>Reistre um {state} com poucos clicks!</h1>
-
-    </div>
-  )
+    <>
+      <h1>Registre um {state} com poucos clicks!</h1>
+      {states[state!]}
+    </>
+  );
 }

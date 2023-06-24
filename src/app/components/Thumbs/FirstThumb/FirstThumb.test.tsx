@@ -24,8 +24,7 @@ describe("<FirstThumb/>", () => {
   })
 
   it("should render without errors", () => {
-    const { container } = render(<FirstThumb />
-    );
+    const { container } = render(<FirstThumb />);
     expect(container).toBeInTheDocument();
   });
 
@@ -57,4 +56,18 @@ describe("<FirstThumb/>", () => {
     });
   });
 
+  it("should", () => {
+    jest.mock("@hooks/useStateContext", () => ({
+      useStateContext: jest.fn(() => ({
+        state: "Cliente",
+        filteredData: [],
+        data: mockedCard,
+        setData: jest.fn()
+      })),
+    }));
+    const { container } = render(<FirstThumb />);
+
+    expect(container).toBeInTheDocument()
+
+  })
 })

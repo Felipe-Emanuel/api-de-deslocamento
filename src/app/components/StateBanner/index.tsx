@@ -2,9 +2,11 @@ import styles from "./StateBanner.module.scss";
 import { Button } from "@mui/material";
 import { Normalize } from "@/src/functions/Normalize";
 import { useStateContext } from "@hooks/useStateContext";
+import { usePageStateContext } from "../../data/hooks/usePageStateContext";
 
 export function StateBanner() {
   const { state, outHome } = useStateContext();
+  const { pageState } = usePageStateContext();
   const { capitalizeName } = Normalize();
 
   return (
@@ -16,7 +18,7 @@ export function StateBanner() {
       <h4 className={outHome ? styles.outHomeSubtitle : ''}>{capitalizeName(state!)}</h4>
       <a data-testid="navigation" href={outHome ? `#main-section` : '#demo'} >
         <Button variant="contained" color="warning" className={styles.demoButton}>
-          {outHome ? 'Explorar' : 'Ver Demonstração'}
+          {outHome ? pageState : 'Ver Demonstração'}
         </Button>
       </a>
     </div>
