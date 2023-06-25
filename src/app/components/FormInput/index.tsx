@@ -1,8 +1,9 @@
+import styles from "./FormInput.module.scss"
 import { useInput } from "@hooks/useInput";
 import { TextField, Box } from "@mui/material";
 import { FormControlComp } from "../FormControl";
 import { useStateContext } from "@hooks/useStateContext";
-import WarningAmberIcon from "@mui/icons-material/WarningAmber";
+import { usePageStateContext } from "../../data/hooks/usePageStateContext";
 
 interface FormInputProps {
   handleClick?: () => void;
@@ -44,7 +45,6 @@ export const inputLabel = (objectKey: string) => {
 };
 
 export function FormInput({
-  className,
   id = 0,
   isEdditForm = false,
 }: FormInputProps) {
@@ -63,6 +63,7 @@ export function FormInput({
     updatedVehicle,
   } = useInput()!;
   const { state, outHome, handleChange } = useStateContext();
+  const { pageState } = usePageStateContext();
 
   const homeFormOptions = {
     cliente: client,
@@ -120,17 +121,18 @@ export function FormInput({
         return (
           <Box
             key={i}
-            width={{ width: "50%" }}
+            width={{ width: isEdditForm || pageState === "cadastrar" ? "100%" : "25ch"}}
             component="form"
             sx={{
-              "& > :not(style)": { m: 1, width: "25ch" },
-              position: "relative",
+              "& > :not(style)": { my: 0.5, width: isEdditForm || pageState === "cadastrar" ? "100%" : "25ch", padding: objectKey === "vencimento" ? 1 : 0 },
+              position: "relative"
             }}
-            noValidate
-            autoComplete="off"
-            className={className}
-          >
+            >
             <TextField
+              InputProps={{
+                readOnly: objectKey === "id",
+              }}
+              className={styles.formInput}
               autoComplete="autocomplete"
               required
               //@ts-ignore
@@ -146,13 +148,6 @@ export function FormInput({
               variant="standard"
               size="small"
             />
-            {objectKey === "quilometro_final" && (
-              <WarningAmberIcon
-                titleAccess="quilometragem final deve ser maior à inicial"
-                color="warning"
-                sx={{ position: "absolute", fontSize: 12, top: 0, left: "100%" }}
-              />
-            )}
           </Box>
         );
       })}

@@ -3,14 +3,14 @@ export type Conductor = {
   nome: string | undefined;
   numeroHabilitacao: string | undefined;
   catergoriaHabilitacao: string | undefined;
-  vencimentoHabilitacao: Date;
+  vencimentoHabilitacao: string | Date;
 };
 
 export type NewConductor = {
   nome: string | undefined;
   numeroHabilitacao: string | undefined;
   categoriaHabilitacao: string | undefined;
-  vencimentoHabilitacao: Date;
+  vencimentoHabilitacao: string | Date;
 };
 
 export type UpdatedConductor = {

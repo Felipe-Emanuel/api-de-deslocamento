@@ -1,5 +1,5 @@
 'use client';
-import './globals.scss'
+import './styles/globals.scss'
 import { Header } from './components/Header';
 import { ToastContainer } from 'react-toastify';
 import { StateContextProvider } from './data/contexts/StateContext';
@@ -10,8 +10,10 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
+
   return (
     <html lang="pt-br">
+       <title>Api-Deslocamento</title>
       <body>
       <ToastContainer
         position="top-right"

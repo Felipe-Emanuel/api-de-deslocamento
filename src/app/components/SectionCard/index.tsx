@@ -25,11 +25,11 @@ export function SectionCard({ title, isLastObject }: SectionCardProps) {
     null
   );
 
-  const filteredData = isLastObject ? data?.slice(0, 3) : data?.slice(3);
+  const filteredData = isLastObject ? data?.slice(-3) : data?.slice(0, -3);
 
   return (
     <>
-      <h1>{title}</h1>
+      <h1>{data.length <= 3 ? null : title}</h1>
       <div className={styles.sectionCard}>
         {filteredData?.map((item, i) => {
           const handleClick = () => {
@@ -50,7 +50,7 @@ export function SectionCard({ title, isLastObject }: SectionCardProps) {
             <>
               {isModal && (
                 <ModalEddit
-                  key={i}
+                  key={item.id}
                   item={dataCard}
                   handleClick={() => setIsModal(false)}
                 />

@@ -3,15 +3,16 @@
   flex-wrap: wrap;
   gap: 1rem;
   padding: 1rem;
-  background-color: var(--white);
   border-radius: var(--xs);
+  background-color: var(--primary);
   box-shadow: 0 0 10px var(--black);
   justify-content: space-around;
 
   .form{
-    background-color: var(--white);
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
 
   .formInput{

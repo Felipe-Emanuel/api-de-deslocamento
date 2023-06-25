@@ -1,0 +1,43 @@
+.card {
+  transition: all 0.3s;
+  width: 20rem;
+  background-color: transparent;
+  color: var(--white);
+  border: 1px solid var(--secondary);
+}
+
+.card:hover{
+  transform: scale(1.01);
+}
+
+.cardEdit {
+  transition: all 0.3s;
+  width: 20rem;
+  background-color: transparent;
+  border: 1px solid var(--secondary);
+  color: var(--white);
+  max-height: fit-content;
+
+  h3 {
+    padding: 0.5rem;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    color: var(--white);
+  }
+
+}
+
+.cardHeader{
+  border-bottom: 1px solid var(--orange);
+  padding-bottom: .5rem;;
+}
+
+.img {
+    border-radius: 50%;
+}
+
+@media (max-width: 600px) {
+  .cardEdit {
+    display: none;
+  }
+}

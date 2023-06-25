@@ -3,7 +3,7 @@
   gap: 1rem;
   padding: 1rem;
   flex-direction: column;
-  background-color: var(--white);
+  background-color: var(--primary);
   border-radius: var(--xs);
   box-shadow: 0 0 10px var(--black);
 
@@ -11,10 +11,6 @@
   .form {
     display: flex;
     margin: auto;
-
-    h2{
-      color: rgba(0, 0, 0, 0.7);
-    }
 
     button {
       width: 100%;

@@ -14,12 +14,13 @@ import { RegisterDisplacementCard } from "./RegisterDisplacementCard";
 
 export function RegisterDisplacement() {
   const { handlePostCLick } = useNewPost();
-  const { value } = useInput();
+  const { value } = useInput() || {};
   const { state } = useStateContext();
   const { ids } = usePageStateContext();
   const [vehicles, setVehicles] = useState<Vehicle[]>([]);
   const [initialKm, setInitialKm] = useState(0);
 
+  if (value === undefined) return null;
   const { motivo, observação, controle } = value;
 
   const { idCondutor, idVeiculo, idCliente } = ids;
@@ -46,7 +47,7 @@ export function RegisterDisplacement() {
       const vehicleById = vehicles.filter(
         (vehicle) => vehicle.id === idVeiculo
       );
-      setInitialKm(vehicleById[0].kmAtual!);
+      setInitialKm(vehicleById?.[0].kmAtual!);
     }
   }, [idVeiculo]);
 
@@ -62,28 +63,26 @@ export function RegisterDisplacement() {
   };
 
   return (
-    <>
-      <div className={styles.register}>
-        <div className={styles.preview}>
-          <div>
-            <div className={styles.form}>
-              <div>
-                <h2>Por favor, preencha os campos abaixo</h2>
-                <FormInput />
-                <Button
-                  type="submit"
-                  variant="contained"
-                  color="secondary"
-                  onClick={() => handlePostCLick(obj, newConductor)}
-                >
-                  Registrar {state}!
-                </Button>
-              </div>
+    <div className={styles.register}>
+      <div className={styles.preview}>
+        <div>
+          <div className={styles.form}>
+            <div>
+              <h2>Por favor, preencha os campos abaixo</h2>
+              <FormInput />
+              <Button
+                type="submit"
+                variant="contained"
+                color="secondary"
+                onClick={() => handlePostCLick(obj, newConductor)}
+              >
+                Registrar {state}!
+              </Button>
             </div>
           </div>
-          <RegisterDisplacementCard initialKm={initialKm} />
         </div>
+        <RegisterDisplacementCard initialKm={initialKm} />
       </div>
-    </>
+    </div>
   );
 }

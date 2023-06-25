@@ -7,18 +7,8 @@ export function Normalize() {
       .join(" ");
   };
 
-  const formatCep = (value: string): string => {
-    const formattedValue = value.replace(/\D/g, "");
-    const cepRegex = /^(\d{5})(\d{3})$/;
-
-    if (cepRegex.test(formattedValue)) {
-      return formattedValue.replace(cepRegex, "$1-$2");
-    }
-
-    return formattedValue;
-  };
-
-  function stringToDate(dataStr: string, isTime?: boolean): string | null {
+  function stringToDate(dataStr: string | Date, isTime?: boolean): string | undefined | null {
+    if (typeof dataStr === "string")
     try {
       const [datePartOne, datePartTwo] = dataStr.split("T");
       const [dateYear, dateMonth, dateDay] = datePartOne.split("-");
@@ -54,7 +44,6 @@ export function Normalize() {
 
   return {
     capitalizeName,
-    formatCep,
     stringToDate,
   };
 }

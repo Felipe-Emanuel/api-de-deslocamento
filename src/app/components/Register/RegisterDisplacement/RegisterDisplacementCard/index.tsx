@@ -1,13 +1,13 @@
 import Card from "@mui/material/Card";
 import Image from "next/image";
+import styles from "./RegisterDisplacementCard.module.scss";
 import Typography from "@mui/material/Typography";
 import CardContent from "@mui/material/CardContent";
-import { toast } from "react-toastify";
 import { useInput } from "@hooks/useInput";
-import { useEffect } from "react";
 import { CardActionArea } from "@mui/material";
 import { useStateContext } from "@hooks/useStateContext";
 import { usePageStateContext } from "@hooks/usePageStateContext";
+import { ReactNode } from "react";
 
 interface RegisterDisplacementCardProps {
   initialKm?: number;
@@ -22,8 +22,8 @@ export function RegisterDisplacementCard({
   const { value } = useInput() || {};
   const { state, data } = useStateContext();
 
-  if(!data) return null;
-  const { kmInicial } = data?.[0] || initialKm
+  if (!data) return null;
+  const { kmInicial } = data?.[0] || initialKm;
 
   const { motivo, observação, controle, quilometro_final } = value!;
   const { idCondutor, idVeiculo, idCliente } = ids;
@@ -49,54 +49,56 @@ export function RegisterDisplacementCard({
   const newIdCliente =
     idCliente === "" ? "Qual o Id do cliente?" : `Id do cliente: ${idCliente}`;
 
-    useEffect(() => {
-      if(kmInicial && quilometro_final! < kmInicial ) {
-        toast.warning("A quilometragem final não pode ser menor que a quilometragem inicial")
-      }
-
-    }, [value])
+  const renderHeader = (children: ReactNode) => (
+    <Typography
+      gutterBottom
+      component="div"
+      variant="overline"
+      sx={{
+        fontWeight: "bold",
+        display: "flex",
+        alignItems: "center",
+        gap: 1,
+        paddingTop: 5,
+      }}
+      className={styles.header}
+    >
+      <Image
+        src={`https://source.unsplash.com/random/400x400/?trip`}
+        height={50}
+        width={50}
+        alt={`${state} banner`}
+        blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mO0d7avBwACzAFCwWiztQAAAABJRU5ErkJggg=="
+        placeholder="blur"
+      />
+      {children}
+    </Typography>
+  );
 
   return (
-    <Card data-testid="card" variant="outlined" sx={{ maxWidth: 345 }}>
+    <Card data-testid="card" className={styles.card}>
       <CardActionArea>
-        <h3>Pré visualização</h3>
-        <Image
-          src={`https://source.unsplash.com/random/250x250/?space`}
-          height={250}
-          width={350}
-          alt={`${state} banner`}
-          blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mO0d7avBwACzAFCwWiztQAAAABJRU5ErkJggg=="
-          placeholder="blur"
-        />
+        <h3 className={styles.floatTitle}>Pré visualização</h3>
         <CardContent>
-          {!isOnEddit && (
-            <Typography gutterBottom variant="overline" component="div" data-testid="reason">
-              {newReason}
-            </Typography>
-          )}
-          {isOnEddit ? (
-            <Typography variant="overline">{newEnd}</Typography>
-          ) : (
+          {isOnEddit ? renderHeader(newEnd) : renderHeader(newReason)}
 
-            <Typography variant="overline">{newKm}</Typography>
-          )}
           <Typography component="div" variant="overline">
             {newObservation}
           </Typography>
           {!isOnEddit && (
             <>
               <Typography component="div" variant="overline">
-              {newCheckList}
-            </Typography>
-            <Typography component="div" variant="overline">
-              {newIdConductor}
-            </Typography>
-            <Typography component="div" variant="overline">
-              {newIdVeiculo}
-            </Typography>
-            <Typography component="div" variant="overline">
-              {newIdCliente}
-            </Typography>
+                {newCheckList}
+              </Typography>
+              <Typography component="div" variant="overline">
+                {newIdConductor}
+              </Typography>
+              <Typography component="div" variant="overline">
+                {newIdVeiculo}
+              </Typography>
+              <Typography component="div" variant="overline">
+                {newIdCliente}
+              </Typography>
             </>
           )}
         </CardContent>

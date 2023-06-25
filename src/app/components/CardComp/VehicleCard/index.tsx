@@ -1,5 +1,6 @@
 import Card from "@mui/material/Card";
 import Image from "next/image";
+import styles from "../CardComp.module.scss";
 import Typography from "@mui/material/Typography";
 import CardContent from "@mui/material/CardContent";
 import { ItemWithType } from "@contexts/PageStateContext";
@@ -18,46 +19,48 @@ export function VehicleCard({
 }: VehicleCardProps) {
   if (!data) return null;
 
-  const {
-    placa,
-    marcaModelo,
-    anoFabricacao,
-    kmAtual
-  } = data;
+  const { placa, marcaModelo, anoFabricacao, kmAtual } = data;
 
   return (
     <Card
       data-testid="card"
       onClick={onClick}
       variant="outlined"
-      sx={{ maxWidth: 345 }}
+      className={!isEddit ? styles.card : styles.cardEdit}
     >
       {isEddit && <h3>Cliente Atual</h3>}
       <CardActionArea>
-        <Image
-          src={`https://source.unsplash.com/random/400x400/?vehicle`}
-          height={220}
-          width={400}
-          alt={`cliente banner`}
-          blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mO0d7avBwACzAFCwWiztQAAAABJRU5ErkJggg=="
-          placeholder="blur"
-        />
         <CardContent>
           <Typography
+            className={styles.cardHeader}
             gutterBottom
             component="div"
             variant="overline"
-            sx={{ fontWeight: "bold" }}
+            sx={{
+              fontWeight: "bold",
+              display: "flex",
+              alignItems: "center",
+              gap: 1,
+            }}
           >
-            Placa: {placa}
+            <Image
+              src={`https://source.unsplash.com/random/400x400/?vehicle`}
+              height={50}
+              width={50}
+              alt={`cliente banner`}
+              blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mO0d7avBwACzAFCwWiztQAAAABJRU5ErkJggg=="
+              placeholder="blur"
+              className={styles.img}
+            />
+            {marcaModelo}
           </Typography>
           <Typography variant="overline" fontSize={10}>
-            Modelo do Veículo: {marcaModelo}
+            Placa: {placa}
           </Typography>
           <Typography component="div" variant="overline" fontSize={10}>
             Ano de Fabricação: {anoFabricacao}
           </Typography>
-          <Typography component="div" variant="overline" color="text.primary" fontSize={10}>
+          <Typography component="div" variant="overline" fontSize={10}>
             Quilometragem Atual: {kmAtual}
           </Typography>
         </CardContent>

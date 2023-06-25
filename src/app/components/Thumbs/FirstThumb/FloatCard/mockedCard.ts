@@ -31,6 +31,7 @@ export const mockedCard: ItemWithType[] = [
     idCondutor: 1,
     idVeiculo: 2,
     idCliente: 3,
+    type: "idCliente"
   },
 ];
 

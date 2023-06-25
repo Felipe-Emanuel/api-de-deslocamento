@@ -1,0 +1,29 @@
+.card {
+  transition: all 0.3s;
+  width: 20rem;
+  background-color: transparent;
+  border: 1px solid var(--secondary);
+  color: var(--white);
+  max-height: fit-content;
+
+}
+
+.floatTitle {
+  position: absolute;
+  padding: 0.5rem;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  color: var(--white);
+}
+
+.header {
+  border-bottom: 1px solid var(--orange);
+  padding-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+
+  img {
+    border-radius: 50%;
+  }
+}

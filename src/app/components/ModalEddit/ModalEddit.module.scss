@@ -15,22 +15,39 @@
     flex-direction: column;
     gap: 1rem;
     padding: 1rem;
-    background-color: var(--white);
+    background-color: var(--primary);
     border-radius: var(--xs);
     animation-delay: 150ms;
     animation-duration: 300ms;
     animation-fill-mode: forwards;
     animation-timing-function: alternate;
     animation-name: modalAppear;
+    justify-content: center;
+    align-items: center;
 
     h1 {
       text-align: center;
       color: var(--secondary);
     }
+
+    .cards {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .form {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      max-width: 40rem;
+    }
+
     .buttons{
       display: flex;
       gap: 1rem;
       width: 100%;
+      justify-content: center;
+      align-items: center;
     }
   }
 

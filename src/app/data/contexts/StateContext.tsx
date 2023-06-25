@@ -29,7 +29,7 @@ export type CardType = {
   nome: string;
   numeroHabilitacao: string;
   catergoriaHabilitacao: string;
-  vencimentoHabilitacao: string;
+  vencimentoHabilitacao: string | Date;
   kmInicial: number,
   kmFinal: number,
   inicioDeslocamento: string,

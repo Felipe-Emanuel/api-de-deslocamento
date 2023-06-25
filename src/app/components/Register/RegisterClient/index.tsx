@@ -13,7 +13,7 @@ export function RegisterClient() {
   const { value } = useInput() || {};
   const { state } = useStateContext();
 
-  if(value === undefined) return null;
+  if (value === undefined) return null;
 
   const { nome, documento, tipo, logradouro, número, cidade, uf, bairro } =
     value;

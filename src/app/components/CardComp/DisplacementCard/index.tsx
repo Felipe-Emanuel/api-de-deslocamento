@@ -1,5 +1,6 @@
 import Card from "@mui/material/Card";
 import Image from "next/image";
+import styles from "../CardComp.module.scss";
 import Typography from "@mui/material/Typography";
 import CardContent from "@mui/material/CardContent";
 import { Normalize } from "@/src/functions/Normalize";
@@ -30,7 +31,7 @@ export function DisplacementCard({
     idVeiculo,
     kmInicial,
     fimDeslocamento,
-    inicioDeslocamento
+    inicioDeslocamento,
   } = data;
 
   return (
@@ -38,27 +39,40 @@ export function DisplacementCard({
       data-testid="card"
       onClick={onClick}
       variant="outlined"
-      sx={{ maxWidth: 345 }}
+      className={!isEddit ? styles.card : styles.cardEdit}
     >
       {isEddit && <h3>Cliente Atual</h3>}
       <CardActionArea>
-        <Image
-          src={`https://source.unsplash.com/random/400x400/?trip`}
-          height={220}
-          width={400}
-          alt={`cliente banner`}
-          blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mO0d7avBwACzAFCwWiztQAAAABJRU5ErkJggg=="
-          placeholder="blur"
-        />
         <CardContent>
-          <Typography component="div" variant="overline" fontSize={10}>
-            Quilometragem inicial: {kmInicial || 0}
+          <Typography
+            className={styles.cardHeader}
+            gutterBottom
+            component="div"
+            variant="overline"
+            sx={{
+              fontWeight: "bold",
+              display: "flex",
+              alignItems: "center",
+              gap: 1,
+            }}
+          >
+            <Image
+              src={`https://source.unsplash.com/random/400x400/?trip`}
+              height={50}
+              width={50}
+              alt={`cliente banner`}
+              blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mO0d7avBwACzAFCwWiztQAAAABJRU5ErkJggg=="
+              placeholder="blur"
+              className={styles.img}
+            />
+            {motivo}
           </Typography>
           <Typography component="div" variant="overline" fontSize={10}>
             Quilometragem final: {quilometro_final} Km
           </Typography>
           <Typography component="div" variant="overline" fontSize={10}>
-            Início do deslocamento: {stringToDate(inicioDeslocamento ?? "") || 0}
+            Início do deslocamento:{" "}
+            {stringToDate(inicioDeslocamento ?? "") || 0}
           </Typography>
           <Typography component="div" variant="overline" fontSize={10}>
             Fim do deslocamento:{" "}
@@ -71,7 +85,7 @@ export function DisplacementCard({
             Observação sobre a viagem: {observacao}
           </Typography>
           <Typography component="div" variant="overline" fontSize={10}>
-            Motivo da viagem: {motivo}
+            Quilometragem inicial: {kmInicial || 0}
           </Typography>
           <Typography component="div" variant="overline" fontSize={10}>
             id do cliente: {idCliente}

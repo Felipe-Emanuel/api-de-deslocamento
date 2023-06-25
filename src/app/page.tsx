@@ -1,4 +1,4 @@
-import styles from "./Home.module.scss";
+import styles from "./styles/Home.module.scss";
 import { Section } from "./components/containers/Section";
 import { Container } from "./components/containers/Container";
 import { InfoSection } from "./components/InfoSection";
@@ -8,7 +8,7 @@ export default function Home() {
     <>
       <Container>
         <h2 className={styles.subtitle}>
-          Conectando você aos seus clientes, de forma simples e eficiente!
+          Conectando o mundo a você de forma simples e eficiente!
         </h2>
         <Section id="demo">
           <InfoSection />
