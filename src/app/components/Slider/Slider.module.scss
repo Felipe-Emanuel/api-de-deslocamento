@@ -1,7 +1,8 @@
 .swiper {
-  width: 100%;
+  width: 100vw;
   padding: 0.5rem 1rem;
   position: relative;
+  overflow-x: hidden;
 
   .overlay {
     opacity: 0;
