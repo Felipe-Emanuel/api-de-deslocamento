@@ -2,8 +2,8 @@
   position: relative;
   height: fit-content;
   padding: 6rem;
-  width: 100vw;
   display: flex;
+  width: 100vw;
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
@@ -20,17 +20,17 @@
   pointer-events: none;
 }
 
-
-@media (max-width: 500px) {
-  .container {
-    width: fit-content;
-  }
-}
-
 @media (max-width: 1450px) {
   .container {
     justify-content: space-between;
     padding: 1rem .5rem;
+  }
+}
+
+@media (max-width: 1280px) {
+  .container {
+  width: 100%;
+
   }
 }
 

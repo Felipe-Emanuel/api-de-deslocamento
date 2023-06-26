@@ -39,7 +39,7 @@
 body, html{
   background: linear-gradient(269.48deg, #02041A 0.4%, #121214 55.77%, #1A114A 95.39%);
   color: var(--tertiary);
-  width: 100%;
+  width: fit-content;
   scroll-behavior: smooth;
   overflow-x: hidden;
 
@@ -60,12 +60,6 @@ body, html{
     background: linear-gradient(269.48deg, #02041A 0.4%, #121214 55.77%, #1A114A 95.39%);;
   }
 
-}
-
-@media (max-width: 1280px) {
-  body{
-    width: fit-content;
-  }
 }
 
 body,
