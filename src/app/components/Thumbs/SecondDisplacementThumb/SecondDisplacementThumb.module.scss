@@ -1,26 +1,24 @@
 .thumb {
   height: 100%;
   padding: 1rem;
-  background-image: url(../../../../../public/images/thumb.png);
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+  background: transparent;
+  border: 4px solid var(--secondary);
   position: relative;
   color: var(--white);
 
   .floatCard {
     position: absolute;
     width: 45%;
-    height: 100%;
+    height: 60%;
     padding: 1rem;
-    background-color: var(--white);
-    bottom: -6rem;
-    left: -.5rem;
+    background-color: var(--primary);
+    bottom: 0rem;
+    left: 0rem;
     border-radius: var(--xs);
 
     h3, p {
       font-size: var(--sm);
-      color: rgba(0, 0, 0, 0.5);
+      color: rgba(225, 225, 225, 0.9);
       font-weight: bold;
       width: 250px;
       white-space: nowrap;

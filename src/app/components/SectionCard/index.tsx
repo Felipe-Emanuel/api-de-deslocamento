@@ -21,9 +21,7 @@ export function SectionCard({ title, isLastObject }: SectionCardProps) {
   if (!data) return null;
 
   const [isModal, setIsModal] = useState(false);
-  const [dataCard, setDataCard] = useState<(CardType & ItemWithType) | null>(
-    null
-  );
+  const [dataCard, setDataCard] = useState<(CardType & ItemWithType) | null>(null);
 
   const filteredData = isLastObject ? data?.slice(-3) : data?.slice(0, -3);
 
@@ -61,5 +59,4 @@ export function SectionCard({ title, isLastObject }: SectionCardProps) {
       </div>
     </>
   );
-
 }

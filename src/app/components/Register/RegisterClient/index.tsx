@@ -55,9 +55,7 @@ export function RegisterClient() {
             Registrar {state}!
           </Button>
         </div>
-        <div className={styles.preview}>
           <RegisterClientCard />
-        </div>
       </div>
     </>
   );

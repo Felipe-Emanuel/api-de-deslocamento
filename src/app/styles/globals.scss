@@ -96,14 +96,14 @@ input[type=number] {
 }
 
 .MuiInputBase-input, .MuiFormLabel-root {
-  color: rgba(225, 225, 225, 0.7);
-  font-size: small;
-  font: 400 "Roboto", sans-serif;
+  color: rgba(225, 225, 225, 0.7) !important;
+  font-size: small !important;
+  font: 400 "Roboto", sans-serif !important;
 }
 
 .MuiInputBase-input {
-  border-radius: 4px;
-  background-color: rgba(0, 0, 0, 0.3);
-  color: var(--white);
+  border-radius: 4px !important;
+  color: var(--white) !important;
+  background-color: rgba(225, 255, 255, 0.1) !important;
 }
 

@@ -12,7 +12,7 @@ export function RegisterVehicle() {
   const { clientForm, value } = useInput() || {};
   const { state } = useStateContext();
 
-  if(value === undefined) return null;
+  if (value === undefined) return null;
 
   const { placa, fabricado, modelo, rodagem } = value;
 
@@ -38,9 +38,7 @@ export function RegisterVehicle() {
             Registrar {state}!
           </Button>
         </div>
-        <div className={styles.preview}>
-          <RegisterVehicleCard />
-        </div>
+        <RegisterVehicleCard />
       </div>
     </>
   );

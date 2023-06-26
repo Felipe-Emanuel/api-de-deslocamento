@@ -25,13 +25,13 @@ export function SecondConductorThumb() {
       <div className={styles.floatCard}>
         <Stack spacing={2} className={styles.skeleton}>
           <div>
-            <Skeleton variant="circular" width={50} height={50} />
+            <Skeleton variant="circular" sx={{ background: "#fff" }} width={50} height={50} />
             <h3 data-testid="user-name">{userName}</h3>
           </div>
           <p data-testid="user-license">{userLicense}</p>
           <p data-testid="user-category-qualification">{userCategoryQualification}</p>
-          <Skeleton variant="rounded" width={150} height={10} />
-          <Skeleton variant="rounded" width={180} height={10} />
+          <Skeleton variant="rounded" sx={{ background: "#fff" }} width={150} height={10} />
+          <Skeleton variant="rounded" sx={{ background: "#fff" }} width={180} height={10} />
         </Stack>
       </div>
       <FormInput />

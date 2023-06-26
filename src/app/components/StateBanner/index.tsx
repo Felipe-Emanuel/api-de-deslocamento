@@ -16,11 +16,13 @@ export function StateBanner() {
       )}
       <h3>{outHome ? 'Bem vindo à sessão' : 'Deslocamento'}</h3>
       <h4 className={outHome ? styles.outHomeSubtitle : ''}>{capitalizeName(state!)}</h4>
-      <a data-testid="navigation" href={outHome ? `#main-section` : '#demo'} >
-        <Button variant="contained" color="warning" className={styles.demoButton}>
-          {outHome ? pageState : 'Ver Demonstração'}
-        </Button>
-      </a>
+      {pageState !== "início" && (
+        <a data-testid="navigation" href={outHome ? `#main-section` : '#demo'} >
+          <Button variant="contained" color="warning" className={styles.demoButton}>
+            {outHome ? pageState : 'Ver Demonstração'}
+          </Button>
+        </a>
+      )}
     </div>
   );
 }

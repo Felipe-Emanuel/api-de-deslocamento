@@ -46,9 +46,7 @@ export function RegisterConductor() {
             Registrar {state}!
           </Button>
         </div>
-        <div className={styles.preview}>
           <RegisterConductorCard />
-        </div>
       </div>
     </>
   );

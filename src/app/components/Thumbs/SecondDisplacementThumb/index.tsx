@@ -30,8 +30,8 @@ export function SecondDisplacementThumb() {
           <p data-testid="userReason">{userReason}</p>
           <p data-testid="userObservation">{userObservation}</p>
           <h3 data-testid="displacementCheckList">{displacementCheckList}</h3>
-          <Skeleton variant="rounded" width={150} height={10} />
-          <Skeleton variant="rounded" width={180} height={10} />
+          <Skeleton sx={{ background: "#fff" }} variant="rounded" width={150} height={10} />
+          <Skeleton sx={{ background: "#fff" }} variant="rounded" width={180} height={10} />
         </Stack>
       </div>
       <div className={styles.formInput}>

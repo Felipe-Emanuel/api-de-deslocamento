@@ -19,14 +19,14 @@ export function Search({ size = "medium", className = "" }: SearchProps) {
       size={size}
       key={state}
       id={`${state} autocomplete`}
-      disablePortal
       options={filteredData || []}
-      sx={{ width: 180, background: 'rgba(0, 0, 0, 1)', borderRadius: '4px' }}
+      sx={{ width: 180 }}
       renderInput={(params) => (
         <TextField
           {...params}
-          variant="filled"
           color="warning"
+          variant="standard"
+          size="medium"
           label={capitalizeName(state!)}
         />
       )}

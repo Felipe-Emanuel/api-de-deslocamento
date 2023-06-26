@@ -30,8 +30,8 @@ export function SecondVehicleThumb() {
           <p data-testid="carModel">{carModel}</p>
           <p data-testid="carYearManufacture">{carYearManufacture}</p>
           <h3 data-testid="license">{license}</h3>
-          <Skeleton variant="rounded" width={150} height={10} />
-          <Skeleton variant="rounded" width={180} height={10} />
+          <Skeleton sx={{ background: "#fff" }} variant="rounded" width={150} height={10} />
+          <Skeleton sx={{ background: "#fff" }} variant="rounded" width={180} height={10} />
         </Stack>
       </div>
       <div className={styles.formInput}>

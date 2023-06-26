@@ -1,36 +1,31 @@
 .card {
   transition: all 0.3s;
   width: 18rem;
-  background-color: transparent;
+  background: transparent;
   color: var(--white);
   border: 1px solid var(--secondary);
   height: 20rem;
-}
-
-.card:hover{
-  transform: scale(1.01);
-}
-
-.cardEdit {
-  transition: all 0.3s;
-  width: 20rem;
-  background-color: transparent;
-  border: 1px solid var(--secondary);
-  color: var(--white);
-  max-height: fit-content;
+  padding: 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  position: relative;
+  overflow-x: hidden;
+  overflow-y: scroll;
 
   h3 {
-    padding: 0.5rem;
-    width: 100%;
-    background: rgba(0, 0, 0, 0.7);
-    color: var(--white);
+    color: rgba(225, 225, 225, 0.5);
   }
-
 }
 
 .cardHeader{
   border-bottom: 1px solid var(--orange);
-  padding-bottom: .5rem;;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-weight: bold;
+  color: var(--white);
+  padding: 1rem 0;
+
 }
 
 .img {

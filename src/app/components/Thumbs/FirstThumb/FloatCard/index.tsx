@@ -27,7 +27,7 @@ export function FloatCard({ data = [] }: FloatCardProps) {
         {renderMessage()}
         <div className={styles.label}>
           <div className={styles.header}>
-            <Skeleton variant="circular" width={40} height={40} />
+            <Skeleton sx={{ background: "#fff" }} variant="circular" width={40} height={40} />
             <p>{data[0]?.nome || data[0]?.checkList || data[0]?.marcaModelo}</p>
           </div>
           <div className={styles.Info}>
@@ -47,7 +47,7 @@ export function FloatCard({ data = [] }: FloatCardProps) {
         </div>
         <p>{data[0]?.bairro || data[0]?.observacao}</p>
         {SkeletonWidthSizes.map((size, i) => (
-          <Skeleton key={i} variant="rounded" width={size} height={10} />
+          <Skeleton sx={{ background: "#fff" }} key={i} variant="rounded" width={size} height={10} />
         ))}
       </Stack>
     </div>

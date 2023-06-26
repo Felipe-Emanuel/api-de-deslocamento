@@ -24,7 +24,7 @@ export function SecondClientThumb() {
     <div className={styles.thumb}>
       <div className={styles.floatCard}>
         <div>
-          <Skeleton variant="circular" width={40} height={40} />
+          <Skeleton variant="circular" sx={{ background: "#fff" }} width={40} height={40} />
         </div>
         <h2>{userName}</h2>
         <div>
@@ -32,8 +32,8 @@ export function SecondClientThumb() {
           <span>{userUF}</span>
         </div>
         <Stack spacing={0} className={styles.skeleton}>
-          <Skeleton variant="rounded" width={150} height={10} />
-          <Skeleton variant="rounded" width={180} height={10} />
+          <Skeleton variant="rounded" sx={{ background: "#fff" }} width={150} height={10} />
+          <Skeleton variant="rounded" sx={{ background: "#fff" }} width={180} height={10} />
         </Stack>
       </div>
       <h2>Novo Cadastro de {capitalizeName(state!)}</h2>
