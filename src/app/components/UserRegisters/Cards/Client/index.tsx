@@ -11,7 +11,7 @@ export function Client({ item }: ClientProps) {
     item;
 
   return (
-    <Cardshell header={nome} imagePath="headshot">
+    <Cardshell noToutch header={nome} imagePath="headshot">
       <Typography variant="overline" fontSize={10}>
         Número do Documento: {documento}
       </Typography>

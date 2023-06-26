@@ -14,7 +14,7 @@ export function Conductor({ item }: ConductorProps) {
   } = item;
 
   return (
-    <Cardshell header={condutor} imagePath="conductor">
+    <Cardshell noToutch header={condutor} imagePath="conductor">
       <Typography variant="overline" fontSize={10}>
         Número do Documento: {habilitação}
       </Typography>

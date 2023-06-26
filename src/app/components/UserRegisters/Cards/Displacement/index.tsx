@@ -18,7 +18,7 @@ export function Displacement({ item }: DisplacementProps) {
   } = item;
 
   return (
-    <Cardshell header={motivo} imagePath="trip">
+    <Cardshell noToutch header={motivo} imagePath="trip">
       <Typography component="div" variant="overline" fontSize={10}>
         Lista de controle: {controle}
       </Typography>

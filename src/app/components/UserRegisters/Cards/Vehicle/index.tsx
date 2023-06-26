@@ -10,7 +10,7 @@ export function Vehicle({ item }: VehicleProps) {
   const { fabricado, modelo, placa, rodagem } = item;
 
   return (
-    <Cardshell header={modelo} imagePath="vehicle">
+    <Cardshell noToutch header={modelo} imagePath="vehicle">
       <Typography variant="overline" fontSize={10}>
         Placa: {placa}
       </Typography>

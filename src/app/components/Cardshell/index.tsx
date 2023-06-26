@@ -8,6 +8,7 @@ interface CardshellProps {
   header: ReactNode;
   isEddit?: boolean;
   preview?: boolean;
+  noToutch?: boolean;
   imagePath: string;
 }
 
@@ -17,6 +18,7 @@ export function Cardshell({
   header,
   isEddit = false,
   preview = false,
+  noToutch = false,
   onClick,
 }: CardshellProps) {
   return (
@@ -24,6 +26,7 @@ export function Cardshell({
       data-testid="card"
       onClick={onClick}
       className={styles.card}
+      style={{ pointerEvents: noToutch ? 'none' : 'auto' }}
     >
       {isEddit && <h3>Cliente Atual</h3>}
       {preview && <h3>Pré visualização</h3>}
