@@ -1,7 +1,8 @@
 import styles from "./Slider.module.scss";
+import { A11y } from "swiper";
 import { Swiper } from "swiper/react";
 import { ReactNode } from "react";
-import { A11y } from "swiper";
+import { useWindow } from "@hooks/useWindow";
 
 import "swiper/css";
 
@@ -12,13 +13,14 @@ type ISwiperComponentProps = {
 };
 
 export default function SwiperComponent({ children, isHovered = false }: ISwiperComponentProps) {
+  const { width } = useWindow()
 
   const renderSwiper = () => {
     return (
       <Swiper
         draggable
         grabCursor
-        slidesPerView={4}
+        slidesPerView={width > 500 ? 4 : 2}
         modules={[A11y]}
         className={styles.swiper}
       >
