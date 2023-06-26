@@ -32,7 +32,7 @@ export function RegisterClientCard({
   const newCategory =
     tipo === ""
       ? "Qual a tipo do seu documento?"
-      : `Tipoe de doumento: ${tipo}`;
+      : `Tipo de doumento: ${tipo}`;
 
   const newInfo =
     logradouro === "" ? "Qual o logradouro?" : `Logradouro: ${logradouro}`;

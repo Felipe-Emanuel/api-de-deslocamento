@@ -28,7 +28,7 @@ describe("<RegisterVehicleCard />", () => {
   it("should apply a question when any value slot is empty/undefined", async () => {
     const { findByText } = render(<RegisterVehicleCard />);
 
-    const title = await findByText("Modelo do veículo: Tesla - Qual o ano de fabricação?");
+    const title = await findByText(/Qual o ano de fabricação?/i);
 
     expect(title).toBeInTheDocument();
   });

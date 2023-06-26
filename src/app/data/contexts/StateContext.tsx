@@ -199,7 +199,6 @@ export const StateContextProvider = ({ children }: StateContextProvider) => {
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    console.log(name, value);
     setValue((previous) => ({
       ...previous,
       [name]: value,

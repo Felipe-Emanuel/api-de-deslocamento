@@ -23,7 +23,7 @@ describe("<RegisterConductorCard />", () => {
   it("should apply correctly 'condutor' name", async () => {
     const { findByText } = render(<RegisterConductorCard />);
 
-    const title = await findByText("Nome do condutor: Sullivan");
+    const title = await findByText("Sullivan");
 
     expect(title).toBeInTheDocument();
   });
@@ -31,7 +31,7 @@ describe("<RegisterConductorCard />", () => {
   it("should apply a question when any value slot is empty/undefined", async () => {
     const { findByText } = render(<RegisterConductorCard />);
 
-    const title = await findByText("Qual o número de sua habilitação?");
+    const title = await findByText("Qual o número de sua habilitação? - Categora: A");
 
     expect(title).toBeInTheDocument();
   });

@@ -28,7 +28,6 @@ export const useNewPost = () => {
     newObject: NewConductor | NewClient | NewDisplacement | NewVehicle
   ) => {
     postData(state!, newObject).then((id) => {
-      console.log(id);
       const newUserPost: ClientSide = {
         ...obj,
         id,

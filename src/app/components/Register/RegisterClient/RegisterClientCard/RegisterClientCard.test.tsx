@@ -4,7 +4,7 @@ import { RegisterClientCard } from ".";
 
 
 describe("<RegisterClientCard />", () => {
-  beforeEach(() => {
+  beforeAll(() => {
     jest.mock("@hooks/useStateContext", () => ({
       __esModule: true,
       default: jest.fn(),
@@ -24,6 +24,8 @@ describe("<RegisterClientCard />", () => {
     }));
   })
 
+  beforeEach(() => jest.clearAllMocks())
+
   it("should render without errors", () => {
     const { container } = render(<RegisterClientCard />);
 
@@ -38,9 +40,9 @@ describe("<RegisterClientCard />", () => {
       useStateContext: jest.fn().mockReturnValue({
         state: "cliente",
         value: {
-          nome: "",
+          nome: "John Doe",
           documento: 123,
-          tipo: "CPF",
+          tipo: "",
           logradouro: "Final da rua",
           número: "123",
           cidade: "São Paulo",
@@ -51,7 +53,7 @@ describe("<RegisterClientCard />", () => {
     }));
     const { findByText } = render(<RegisterClientCard />);
 
-    const title = await findByText("Cliente: undefined");
+    const title = await findByText("Tipo de doumento: undefined");
 
     expect(title).toBeInTheDocument();
   });

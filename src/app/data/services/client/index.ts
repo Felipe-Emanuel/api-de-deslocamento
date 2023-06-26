@@ -67,7 +67,7 @@ export const putData = async (path: string, id: string, body: unknown) => {
     const { data } = resp;
 
     toast.success("Sucesso")
-    console.log(data);
+    return data;
   } catch (error) {
     console.error(`Erro ao atualizar em ${path}`, error);
     toast.error(`Erro ao atualizar em ${path}`)
@@ -77,7 +77,6 @@ export const putData = async (path: string, id: string, body: unknown) => {
 export const deleteData = async (path: string, id: string) => {
   const setRoute = () => {
     if (path === "veículo") {
-      console.log(path);
       return `veiculo`
     }
 

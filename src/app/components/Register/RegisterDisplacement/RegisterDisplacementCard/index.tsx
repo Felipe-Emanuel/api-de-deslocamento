@@ -85,6 +85,10 @@ export function RegisterDisplacementCard({
           <Typography component="div" variant="overline">
             {newObservation}
           </Typography>
+
+          <Typography component="div" variant="overline">
+            {newKm}
+          </Typography>
           {!isOnEddit && (
             <>
               <Typography component="div" variant="overline">

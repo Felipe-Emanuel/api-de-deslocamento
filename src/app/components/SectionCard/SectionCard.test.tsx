@@ -8,20 +8,9 @@ jest.mock("@services/client");
 
 jest.mock("@hooks/useInput", () => ({
   __esModule: true,
-  useInput: jest.fn().mockReturnValue({
-    vehicle: {},
-    value: {},
-    client: {},
-    conductor: {},
-    displacement: {},
-    clientForm: {},
-    conductorForm: {},
-    displacementForm: {},
-    vehicleForm: {},
-    updatedConductor: jest.fn(),
-    updateClient: jest.fn(),
-    updatedDisplacement: jest.fn(),
-    updatedVehicle: jest.fn(),
+  useStateContext: jest.fn().mockReturnValue({
+    data: mockedCard,
+    state: "cliente"
   }),
 }));
 
@@ -50,7 +39,7 @@ describe("<SectionCard />", () => {
     expect(container).toBeInTheDocument();
   });
 
-  it("should render correctly title", async () => {
+  it("should render correctly title just if data.length is greater then 3", async () => {
       const { findByText } = render(<SectionCard title="Title" isLastObject={true} />);
       const title = await findByText("Title");
       expect(title).toBeInTheDocument();
