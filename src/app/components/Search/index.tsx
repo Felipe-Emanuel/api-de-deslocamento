@@ -21,7 +21,7 @@ export function Search({ size = "medium", className = "" }: SearchProps) {
       id={`${state} autocomplete`}
       disablePortal
       options={filteredData || []}
-      sx={{ width: 180, background: '#fff' }}
+      sx={{ width: 180, background: 'rgba(0, 0, 0, 1)', borderRadius: '4px' }}
       renderInput={(params) => (
         <TextField
           {...params}

@@ -5,7 +5,7 @@ describe("useLocalStorage", () => {
     window.localStorage.clear();
   })
 
-  const { getLocalStorage, setLocalStorage, STORAGE_KEY } = useLocalStorage();
+  const { getLocalStorage, setLocalStorage, STORAGE_KEY } = useLocalStorage()!;
 
   it("should return item from localStorage", () => {
     window.localStorage.setItem(`${STORAGE_KEY}key`, JSON.stringify("John"));

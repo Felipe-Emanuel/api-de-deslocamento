@@ -47,19 +47,19 @@ export function SectionCard({ title, isLastObject }: SectionCardProps) {
           };
 
           return (
-            <>
+            <div key={`card-${i}`}>
               {isModal && (
                 <ModalEddit
-                  key={item.id}
                   item={dataCard}
                   handleClick={() => setIsModal(false)}
                 />
               )}
               {cardOptions[state!]}
-            </>
+            </div>
           );
         })}
       </div>
     </>
   );
+
 }

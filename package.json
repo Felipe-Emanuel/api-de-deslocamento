@@ -20,6 +20,7 @@
     "@types/react-dom": "18.2.5",
     "axios": "^1.4.0",
     "identity-obj-proxy": "^3.0.0",
+    "inflection": "^2.0.1",
     "jest-css-modules-transform": "^4.4.2",
     "next": "^13.4.6",
     "react": "18.2.0",

@@ -49,19 +49,19 @@ export function FormControlComp({ objectKey }: FormControlProps) {
       <Box
         component="form"
         sx={{
-          "& > :not(style)": { my: 0.5, width: "100%", backgroundColor: "#fff", borderRadius: '4px' },
+          "& > :not(style)": { my: 0.5, width: "100%",  borderRadius: '4px' },
         }}
         noValidate
         autoComplete="off"
-      >
+        >
         <FormControl fullWidth>
           <InputLabel id={`${objectKey}-id`}>{objectKey}</InputLabel>
           <Select
             labelId={`${objectKey}-id`}
             value={ids[objectKey] || []}
             label={objectKey}
-            variant="standard"
             color="warning"
+            variant="filled"
             onChange={(e) => handleIdChange(e, objectKey)}
           >
             {options[objectKey]?.map((item) => {

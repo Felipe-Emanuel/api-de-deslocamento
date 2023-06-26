@@ -123,8 +123,9 @@ export function FormInput({
             key={i}
             width={{ width: isEdditForm || pageState === "cadastrar" ? "100%" : "25ch"}}
             component="form"
+            noValidate
             sx={{
-              "& > :not(style)": { my: 0.5, width: isEdditForm || pageState === "cadastrar" ? "100%" : "25ch", padding: objectKey === "vencimento" ? 1 : 0 },
+              "& > :not(style)": { my: 0.5, width: isEdditForm || pageState === "cadastrar" ? "100%" : "25ch" },
               position: "relative"
             }}
             >
@@ -132,9 +133,7 @@ export function FormInput({
               InputProps={{
                 readOnly: objectKey === "id",
               }}
-              className={styles.formInput}
               autoComplete="autocomplete"
-              required
               //@ts-ignore
               value={inputValue()}
               data-testid={objectKey}
@@ -145,7 +144,7 @@ export function FormInput({
               type={inputType(objectKey)}
               label={inputLabel(objectKey)}
               color="warning"
-              variant="standard"
+              variant="filled"
               size="small"
             />
           </Box>

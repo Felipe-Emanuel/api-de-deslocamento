@@ -4,12 +4,13 @@ import { Section } from "@components/containers/Section";
 import { Register } from "@components/Register";
 import { Container } from "@components/containers/Container";
 import { usePageStateContext } from "@hooks/usePageStateContext";
+import { UserRegisters } from "@/src/app/components/UserRegisters";
 
 const pageStates = {
   início: <Explore />,
   explorar: <Explore />,
   cadastrar: <Register />,
-  "meus registros": <Register />
+  "meus registros": <UserRegisters />
 }
 
 export default function statePage () {

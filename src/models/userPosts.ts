@@ -28,6 +28,7 @@ export type ClientSideConductor = {
   habilitação: string | undefined;
   categoria: string | undefined;
   vencimento: string | undefined;
+  postType?: StateType
 };
 
 export type ClientSideHome = {
@@ -45,6 +46,7 @@ export type ClientSideClient = {
   cidade: string | undefined;
   uf: string | undefined;
   bairro: string | undefined;
+  postType?: StateType
 };
 
 export type DisplacementSideHome = {
@@ -62,6 +64,7 @@ export type ClientSideDisplacement = {
   idCondutor: string | undefined | number;
   idVeiculo: string | undefined | number;
   idCliente: string | undefined | number;
+  postType?: StateType
 };
 
 export type VehicleHome = {
@@ -75,8 +78,9 @@ export type ClientSideVehicle = {
   fabricado: number | undefined;
   modelo: string | undefined;
   rodagem: number | undefined;
+  postType?: StateType
 };
 
-
+export type UserRegistersType = ClientSideConductor & ClientSideClient & ClientSideDisplacement & ClientSideVehicle;
 export type ClientHome = ConductorHome | ClientSideHome | DisplacementSideHome | VehicleHome
-export type ClientSide = ClientSideConductor | ClientSideClient | ClientSideDisplacement | ClientSideVehicle & {id: number | string, postType: StateType}
+export type ClientSide = ClientSideConductor | ClientSideClient | ClientSideDisplacement | ClientSideVehicle | {id: number | string, postType: StateType}
