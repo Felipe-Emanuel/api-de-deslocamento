@@ -105,7 +105,9 @@ export function ModalEddit({ item, handleClick }: ModalEdditProps) {
       <div onClick={(e) => e.stopPropagation()} className={styles.modal}>
         <div className={styles.cards}>
           {modalEdditoptions[state!]}
-          {cardsOptions[state!]}
+          <div className={styles.actualCard}>
+            {cardsOptions[state!]}
+          </div>
         </div>
         <div className={styles.form}>
             <FormInput

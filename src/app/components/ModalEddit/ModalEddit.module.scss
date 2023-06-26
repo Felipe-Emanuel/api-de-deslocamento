@@ -33,6 +33,16 @@
     .cards {
       display: flex;
       gap: 1rem;
+
+      .actualCard {
+        display: block;
+      }
+
+      @media (max-width: 720px) {
+        .actualCard {
+          display: none;
+        }
+      }
     }
 
     .form {
