@@ -1,11 +1,14 @@
 import styles from "./UserRegisters.module.scss";
+import SwiperComponent from "../../Slider/Swiper";
 import { Client } from "../Cards/Client";
 import { Vehicle } from "../Cards/Vehicle";
 import { Section } from "../../containers/Section";
+import { useState } from "react";
 import { Normalize } from "@/src/functions/Normalize";
 import { Conductor } from "../Cards/Conductor";
-import { UserRegistersType } from "@/src/models/userPosts";
+import { SwiperSlide } from "swiper/react";
 import { Displacement } from "../Cards/Displacement";
+import { UserRegistersType } from "@/src/models/userPosts";
 
 interface UserRegistersSectionProps {
   data: UserRegistersType[];
@@ -20,6 +23,10 @@ export function UserRegistersSection({
 }: UserRegistersSectionProps) {
   if (data.length === 0) return null;
 
+  const [isHovered, setIsHovered] = useState(false);
+
+  const changeHover = () => setIsHovered((isHovered) => !isHovered);
+
   const { capitalizeName } = Normalize();
 
   const normalizePlurals = () => {
@@ -33,7 +40,7 @@ export function UserRegistersSection({
   return (
     <Section id={section}>
       <h1>Meus {normalizePlurals()} Cadastrados!</h1>
-      <div className={styles.container}>
+      <SwiperComponent className={styles.container} isHovered={isHovered}>
         {data?.map((client: UserRegistersType, i: number) => {
           const cardOption: { [key: string]: JSX.Element } = {
             cliente: <Client item={client} />,
@@ -42,9 +49,17 @@ export function UserRegistersSection({
             veículo: <Vehicle item={client} />,
           };
 
-          return <div key={i}>{cardOption[section]}</div>;
+          return (
+            <SwiperSlide
+              key={i}
+              onMouseEnter={changeHover}
+              onMouseLeave={changeHover}
+            >
+              {cardOption[section]}
+            </SwiperSlide>
+          );
         })}
-      </div>
+      </SwiperComponent>
     </Section>
   );
 }

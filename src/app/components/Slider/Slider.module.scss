@@ -1,0 +1,23 @@
+.swiper {
+  width: 100%;
+  padding: 0.5rem 1rem;
+  position: relative;
+
+  .overlay {
+    opacity: 0;
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(270deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.00) 6.58%, rgba(0, 0, 0, 0.00) 93.28%, rgba(0, 0, 0, 0.5) 100%);
+    border-radius: var(--xs);
+    transition: all 150ms;
+  }
+
+  .overlayHovered {
+    opacity: 1;
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(270deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.00) 6.58%, rgba(0, 0, 0, 0.00) 93.28%, rgba(0, 0, 0, 0.5) 100%);
+    border-radius: var(--xs);
+    transition: all 150ms;
+  }
+}

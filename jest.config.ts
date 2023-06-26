@@ -12,12 +12,12 @@ const jestConfig: JestConfigWithTsJest = {
     '^@components/(.+)': '<rootDir>/src/app/components/$1',
     '^@services/(.+)': '<rootDir>/src/app/data/services/$1',
     "^.+\\.(css|less|scss)$": "identity-obj-proxy",
+    "^.+\\.module\\.(css|less|scss)$": "identity-obj-proxy",
   },
   transform: {
     '^.+\\.(js|jsx|ts|tsx)$': 'babel-jest',
     '^.+\\.png$': 'jest-transform-stub',
   },
-
 }
 
 export default jestConfig
