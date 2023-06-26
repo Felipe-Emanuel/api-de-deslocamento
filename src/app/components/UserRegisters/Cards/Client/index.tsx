@@ -1,17 +1,20 @@
 import Typography from "@mui/material/Typography";
 import { Cardshell } from "@components/Cardshell";
 import { ClientSideClient } from "@/src/models/userPosts";
+import { Normalize } from "@/src/functions/Normalize";
 
 interface ClientProps {
   item: ClientSideClient;
 }
 
 export function Client({ item }: ClientProps) {
+  const { capitalizeName } = Normalize()
+
   const { bairro, cidade, documento, logradouro, nome, número, tipo, uf } =
     item;
 
   return (
-    <Cardshell noToutch header={nome} imagePath="headshot">
+    <Cardshell noToutch header={capitalizeName(nome || "")} imagePath="headshot">
       <Typography variant="overline" fontSize={10}>
         Número do Documento: {documento}
       </Typography>

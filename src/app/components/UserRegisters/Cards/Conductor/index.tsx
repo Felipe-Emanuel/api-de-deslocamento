@@ -1,12 +1,15 @@
 import Typography from "@mui/material/Typography";
 import { Cardshell } from "@components/Cardshell";
 import { ClientSideConductor } from "@/src/models/userPosts";
+import { Normalize } from "@/src/functions/Normalize";
 
 interface ConductorProps{
   item: ClientSideConductor;
 }
 
 export function Conductor({ item }: ConductorProps) {
+  const { capitalizeName } = Normalize()
+
   const {
     categoria,
     condutor,
@@ -14,7 +17,7 @@ export function Conductor({ item }: ConductorProps) {
   } = item;
 
   return (
-    <Cardshell noToutch header={condutor} imagePath="conductor">
+    <Cardshell noToutch header={capitalizeName(condutor || "")} imagePath="conductor">
       <Typography variant="overline" fontSize={10}>
         Número do Documento: {habilitação}
       </Typography>
