@@ -31,5 +31,5 @@ Este projeto é uma aplicação front-end desenvolvida em 13 dias em ReactJS com
 
 ### Mais detalhes do projeto
 
-* [Veja mais sobre no meu portfólio](http://localhost:3000/projectDetail/Api%20de%20Deslocamento/ZJp46xEAACAArWUT)
+* [Veja mais sobre este desafio no meu portfólio](https://in-portfolio.vercel.app/projectDetail/Api%20de%20Deslocamento/ZJp46xEAACAArWUT)
 
