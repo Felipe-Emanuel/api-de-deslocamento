@@ -7,10 +7,10 @@ import { Section } from "@components/containers/Section";
 import { useState } from "react";
 import { Normalize } from "@/src/functions/Normalize";
 import { Conductor } from "../Cards/Conductor";
+import { StateType } from "@/src/app/data/contexts/StateContext";
 import { SwiperSlide } from "swiper/react";
 import { Displacement } from "../Cards/Displacement";
 import { UserRegistersType } from "@/src/models/userPosts";
-import { StateType } from "@/src/app/data/contexts/StateContext";
 
 interface UserRegistersSectionProps {
   data: UserRegistersType[];

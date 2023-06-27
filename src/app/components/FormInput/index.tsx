@@ -128,7 +128,7 @@ export function FormInput({
           }
 
           //@ts-expect-error: form não se adequa à tipagem de state (StateType)
-          return renderForm[state!][objectKey] || "";
+          return renderForm[state || "cliente"][objectKey] || "";
         };
 
         return (
@@ -151,7 +151,7 @@ export function FormInput({
               value={inputValue()}
               data-testid={objectKey}
               key={i}
-              onChange={(e) => changeEvent(e, objectKey)}
+              onChange={(e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => changeEvent(e, objectKey)}
               name={objectKey}
               id={objectKey}
               type={inputType(objectKey)}

@@ -23,6 +23,7 @@
     "inflection": "^2.0.1",
     "jest-css-modules-transform": "^4.4.2",
     "jest-transform-css": "^6.0.1",
+    "lottie-react": "^2.4.0",
     "next": "^13.4.6",
     "react": "18.2.0",
     "react-dom": "18.2.0",

@@ -84,6 +84,7 @@ type StateContextType = {
   outHome: boolean,
   state: StateType,
   value: ClientLS,
+  paths: { cliente: string; deslocamento: string; condutor: string; veículo: string; },
   clientLS: { idCondutor: string | number; idVeiculo: string | number; idCliente: string | number; };
   data: ItemWithType[] | null
   filteredData: FiltredItem[],
@@ -100,6 +101,12 @@ export const StateContext = createContext<StateContextType>({
   setData: () => {},
   clearValues: () => {},
   handleChange: () => {},
+  paths: {
+    cliente: 'cliente',
+    deslocamento: 'deslocamento',
+    condutor: 'condutor',
+    veículo: 'veículo'
+  },
   state: "cliente",
   filteredData: [],
   value: {},
@@ -118,10 +125,10 @@ export const StateContextProvider = ({ children }: StateContextProvider) => {
   const outHome = asPath !== "/";
 
   const routes: {[key: string]: StateType} = {
-    "/client": 'cliente',
-    "/displacement": 'deslocamento',
-    "/conductor": "condutor",
-    "/vehicle": "veículo" ,
+    "/cliente": 'cliente',
+    "/deslocamento": 'deslocamento',
+    "/condutor": "condutor",
+    "/veículo": "veículo" ,
   }
 
   const initialState = outHome ? routes[asPath] : "cliente"
@@ -240,6 +247,13 @@ export const StateContextProvider = ({ children }: StateContextProvider) => {
     }));
   };
 
+  const paths = {
+    cliente: "cliente",
+    deslocamento: "deslocamento",
+    condutor: "condutor",
+    veículo: "veiculo",
+  };
+
 
   return (
     <StateContext.Provider
@@ -251,6 +265,7 @@ export const StateContextProvider = ({ children }: StateContextProvider) => {
       hasSearched,
       value,
       clientLS,
+      paths,
       setState,
       setData,
       setHasSearched,

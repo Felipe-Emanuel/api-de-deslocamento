@@ -22,7 +22,7 @@ describe("<NoData />", () => {
     //@ts-expect-error: CHAMADA SEM PROPRIEDADE OBRIGATÓRIA
     const { findByText } = render(<NoData />);
 
-    const buttno = await findByText("Cadastre meu primeiro cliente!")
+    const buttno = await findByText(/Cadastrar meu primeiro cliente!/i)
 
     expect(buttno).toBeInTheDocument()
   })
@@ -32,7 +32,7 @@ describe("<NoData />", () => {
 
     const { findByText } = render(<NoData section="condutor" />);
 
-    const button = await findByText("Cadastre meu primeiro condutor!");
+    const button = await findByText(/Cadastrar meu primeiro condutor!/i);
     fireEvent.click(button)
     await waitFor(() => {
       expect(setState).toHaveBeenCalledWith("condutor");

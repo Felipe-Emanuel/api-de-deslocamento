@@ -19,7 +19,8 @@ jest.mock("swiper/css", () => ({
 
 describe('<State />', () => {
   it('should render without errors', () => {
-    const { container } = render(<State />);
+    const params = { state: "cliente" }
+    const { container } = render(<State params={params} />);
 
     expect(container).toBeInTheDocument();
   });

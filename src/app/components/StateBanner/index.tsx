@@ -9,6 +9,8 @@ export function StateBanner() {
   const { pageState } = usePageStateContext();
   const { capitalizeName } = Normalize();
 
+  if(state === undefined) return null;
+
   return (
     <div className={styles.container}>
       {!outHome && (

@@ -6,34 +6,56 @@ import { useStateContext } from "@hooks/useStateContext";
 import { usePageStateContext } from "@hooks/usePageStateContext";
 
 interface NoDataProps {
+  noRouter?: boolean;
   section: StateType | string | undefined;
 }
 
-export function NoData({ section = "cliente" }: NoDataProps) {
+export function NoData({ section = "cliente", noRouter = false }: NoDataProps) {
   const { setState } = useStateContext();
   const { setPageState } = usePageStateContext();
   const { debounced } = useDebounce();
 
-  const changeState = () => setPageState("cadastrar");
+  const changePageState = () => setPageState("cadastrar");
+
+  const normalizeSection = () => {
+    if (section === "veiculo") {
+      return "veículo";
+    }
+
+    return section;
+  };
+
+  const normalizePath = () => {
+    if (section === "veículo") {
+      return "veiculo";
+    }
+
+    return section;
+  };
+
+  const renderButton = () => (
+    <Button
+      onClick={() => {
+        //@ts-ignore
+
+        setState(normalizeSection());
+        debounced(changePageState, 50);
+      }}
+      variant="contained"
+      color="secondary"
+    >
+      Cadastrar meu primeiro {section}!
+    </Button>
+  );
+
+  const renderLink = () => <Link href={normalizePath()}>{renderButton()}</Link>;
 
   return (
     <div style={{ padding: "1rem" }}>
       <h2>
         Nenhum {section} registrado :{"("}
       </h2>
-      <Link href={section}>
-        <Button
-          onClick={() => {
-            //@ts-ignore
-            setState(section);
-            debounced(changeState, 150);
-          }}
-          variant="contained"
-          color="secondary"
-        >
-          Cadastre meu primeiro {section}!
-        </Button>
-      </Link>
+      {noRouter ? renderButton() : renderLink()}
     </div>
   );
 }

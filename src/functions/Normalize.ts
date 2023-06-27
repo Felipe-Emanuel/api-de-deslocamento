@@ -1,5 +1,7 @@
 export function Normalize() {
   const capitalizeName = (str: string) => {
+    if (!str) return null
+
     return str
       .trim()
       .split(" ")

@@ -3,6 +3,9 @@ import { MenuItem } from "../MenuItem";
 import { LinkButton } from "../LinkButton";
 import { useStateContext } from "@hooks/useStateContext";
 import { usePageStateContext } from "@hooks/usePageStateContext";
+import { Button } from "@mui/material";
+import Link from "next/link";
+
 
 const subtitles: { [key: string]: string } = {
   cliente: "Encontre seus clientes com facilidade!",
@@ -15,12 +18,35 @@ export function BoxMenu() {
   const { state, outHome } = useStateContext();
   const { pageState } = usePageStateContext();
 
+  const fixState = state === undefined ? '' : state
+
   const subtitlePages = {
-    explorar: `Explore nosso catálogo de ${state} de forma eficiente!`,
+    explorar: `Explore nosso catálogo de ${fixState} de forma eficiente!`,
     cadastrar: "Cadastre-se e torne-se um mebro da comunidade!",
     "meus registros": "Visualize e gerencie seus registros de deslocamento!",
     início: "Não é o que busca no momento...?",
   };
+
+  const renderMessage = () => {
+    if (state === undefined) return (
+      <>
+        <h2>Oops! Erro 404...</h2>
+        <Link href='/'>
+          <Button variant="contained" color="secondary">Voltar...</Button>
+        </Link>
+      </>
+    )
+
+    return (
+      <>
+      {outHome ? (
+        <h2 className={styles.subtitle}>{subtitlePages[pageState!]}</h2>
+      ) : (
+        <h2 className={styles.subtitle}>{subtitles[state!]}</h2>
+      )}
+      </>
+    )
+  }
 
   return (
     <div className={styles.container}>
@@ -30,11 +56,7 @@ export function BoxMenu() {
         </h1>
         <MenuItem />
       </div>
-      {outHome ? (
-        <h2 className={styles.subtitle}>{subtitlePages[pageState!]}</h2>
-      ) : (
-        <h2 className={styles.subtitle}>{subtitles[state!]}</h2>
-      )}
+      {renderMessage()}
       <LinkButton />
     </div>
   );

@@ -14,7 +14,9 @@ export function Filters() {
     return setData(resp);
   };
 
-  useEffect(() => setHasSearched(false), []);
+  useEffect(() => {
+    setHasSearched(false)
+  }, []);
 
   return (
     <>
