@@ -46,7 +46,7 @@ export const useNewPost = () => {
     });
 
     window?.localStorage.removeItem(`${STORAGE_KEY}cliente`);
-    return clearValues()
+    return Object.keys(obj).map(key => clearValues(key))
   };
 
   return {

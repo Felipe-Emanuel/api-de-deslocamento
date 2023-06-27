@@ -29,7 +29,7 @@ export function RegisterClient() {
     uf,
   };
 
-  const newConductor: NewClient = {
+  const newClient: NewClient = {
     nome,
     numeroDocumento: documento,
     tipoDocumento: tipo,
@@ -50,7 +50,7 @@ export function RegisterClient() {
             type="submit"
             variant="contained"
             color="secondary"
-            onClick={() => handlePostCLick(obj, newConductor)}
+            onClick={() => handlePostCLick(obj, newClient)}
           >
             Registrar {state}!
           </Button>

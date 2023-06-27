@@ -51,7 +51,7 @@ export function RegisterDisplacement() {
     }
   }, [idVeiculo]);
 
-  const newConductor: NewDisplacement = {
+  const newDisplacement: NewDisplacement = {
     kmInicial: initialKm,
     inicioDeslocamento: new Date(),
     checkList: controle,
@@ -74,7 +74,7 @@ export function RegisterDisplacement() {
                 type="submit"
                 variant="contained"
                 color="secondary"
-                onClick={() => handlePostCLick(obj, newConductor)}
+                onClick={() => handlePostCLick(obj, newDisplacement)}
               >
                 Registrar {state}!
               </Button>

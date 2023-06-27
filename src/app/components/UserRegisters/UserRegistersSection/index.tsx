@@ -45,6 +45,7 @@ export function UserRegistersSection({
       <h1>Meus {normalizePlurals()} Cadastrados!</h1>
       <SwiperComponent className={styles.container} isHovered={isHovered}>
         {data?.map((client: UserRegistersType, i: number) => {
+
           const cardOption: { [key: string]: JSX.Element } = {
             cliente: <Client item={client} />,
             deslocamento: <Displacement item={client} />,

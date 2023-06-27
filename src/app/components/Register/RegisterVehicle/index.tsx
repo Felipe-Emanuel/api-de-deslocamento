@@ -9,14 +9,14 @@ import { RegisterVehicleCard } from "./RegisterVehicleCard";
 
 export function RegisterVehicle() {
   const { handlePostCLick } = useNewPost();
-  const { clientForm, value } = useInput() || {};
+  const { vehicleForm, value } = useInput() || {};
   const { state } = useStateContext();
 
   if (value === undefined) return null;
 
   const { placa, fabricado, modelo, rodagem } = value;
 
-  const newConductor: NewVehicle = {
+  const newVehicle: NewVehicle = {
     placa,
     marcaModelo: modelo,
     anoFabricacao: fabricado,
@@ -33,7 +33,7 @@ export function RegisterVehicle() {
             type="submit"
             variant="contained"
             color="secondary"
-            onClick={() => handlePostCLick(clientForm!, newConductor)}
+            onClick={() => handlePostCLick(vehicleForm!, newVehicle)}
           >
             Registrar {state}!
           </Button>

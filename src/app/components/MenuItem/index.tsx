@@ -15,7 +15,7 @@ type statesButtonType = {
 export function MenuItem() {
   const { outHome, state } = useStateContext();
   const { pageState, setPageState } = usePageStateContext();
-  const { value, handleChange, setValue } = useMenuItem();
+  const { handleChange, setValue } = useMenuItem();
   const asPath = usePathname();
 
   useEffect(() => {
@@ -62,12 +62,14 @@ export function MenuItem() {
   ];
 
   const paths = outHome ? pageStates : states;
+  const values = outHome ? pageState : state;
   const initialValue = outHome ? "explorar" : "cliente";
 
   return (
     <Box sx={{ width: "100%" }}>
       <Tabs
-        value={value || initialValue}
+        value={values}
+        defaultValue={initialValue}
         onChange={handleChange}
         textColor="inherit"
         indicatorColor="secondary"

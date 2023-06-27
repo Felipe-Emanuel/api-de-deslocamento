@@ -14,7 +14,6 @@ import { deleteData, putData } from "@services/client";
 import { RegisterVehicleCard } from "@components/Register/RegisterVehicle/RegisterVehicleCard";
 import { RegisterConductorCard } from "@components/Register/RegisterConductor/RegisterConductorCard";
 import { RegisterDisplacementCard } from "@components/Register/RegisterDisplacement/RegisterDisplacementCard";
-import { usePageStateContext } from "../../data/hooks/usePageStateContext";
 
 interface ModalEdditProps {
   handleClick: () => void;
@@ -86,7 +85,7 @@ export function ModalEddit({ item, handleClick }: ModalEdditProps) {
 
         await getDataAfterUpdate();
         window?.localStorage.removeItem(`DESLOCAMENTO:cliente`)
-        clearValues()
+        Object.keys(edditFormOptions[state!] || {}).map(key => clearValues(key))
     } catch (err) {
       return console.error(`${err}`);
     }
@@ -112,19 +111,20 @@ export function ModalEddit({ item, handleClick }: ModalEdditProps) {
           </div>
         </div>
         <div className={styles.form}>
-            <FormInput
-              isEdditForm
-              id={id}
-              isDisplacementForm={state === "deslocamento"}
-            />
+          <FormInput
+            item={item}
+            isEdditForm
+            id={id}
+            isDisplacementForm={state === "deslocamento"}
+          />
         </div>
         <div className={styles.buttons}>
-          <Button variant="contained" color="secondary" onClick={handleUpdate}>
+          <Button variant="contained" color="secondary" type="reset" onClick={handleUpdate}>
             {state === "deslocamento"
               ? "Finalizar deslocamento?"
               : `Atualizar ${state}`}
           </Button>
-          <Button variant="contained" color="warning" onClick={handleDelete}>
+          <Button variant="contained" color="warning" type="reset" onClick={handleDelete}>
             Deletar {state}
           </Button>
         </div>

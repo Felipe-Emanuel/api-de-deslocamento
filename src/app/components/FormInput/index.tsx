@@ -3,6 +3,8 @@ import { TextField, Box } from "@mui/material";
 import { FormControlComp } from "../FormControl";
 import { useStateContext } from "@hooks/useStateContext";
 import { usePageStateContext } from "../../data/hooks/usePageStateContext";
+import { useState, ChangeEvent } from "react";
+import { ItemWithType } from "../../data/contexts/PageStateContext";
 
 interface FormInputProps {
   handleClick?: () => void;
@@ -10,6 +12,7 @@ interface FormInputProps {
   className?: string;
   isEdditForm?: boolean;
   isDisplacementForm?: boolean;
+  item?: ItemWithType
 }
 
 export const inputType = (objectKey: string) => {
@@ -46,6 +49,7 @@ export const inputLabel = (objectKey: string) => {
 export function FormInput({
   id = 0,
   isEdditForm = false,
+  item
 }: FormInputProps) {
   const {
     clientForm,
@@ -63,6 +67,7 @@ export function FormInput({
   } = useInput()!;
   const { state, outHome, handleChange } = useStateContext();
   const { pageState } = usePageStateContext();
+  const [msgError, setMsgError] = useState('teste')
 
   const homeFormOptions = {
     cliente: client,
@@ -87,6 +92,15 @@ export function FormInput({
 
   const form = outHome ? formOptions : homeFormOptions;
   const renderForm = isEdditForm ? edditFormOptions : form;
+
+  const changeEvent = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>, objectKey: string) => {
+    handleChange(e)
+    if(objectKey === "quilometro_final" && +e.target.value <=  item?.kmInicial!) {
+      setMsgError('quilometragem final não pode ser menor que a inicial!')
+    } else {
+      setMsgError('')
+    }
+  }
 
   return (
     <>
@@ -137,7 +151,7 @@ export function FormInput({
               value={inputValue()}
               data-testid={objectKey}
               key={i}
-              onChange={handleChange}
+              onChange={(e) => changeEvent(e, objectKey)}
               name={objectKey}
               id={objectKey}
               type={inputType(objectKey)}
@@ -146,6 +160,7 @@ export function FormInput({
               variant="filled"
               size="small"
             />
+            {objectKey === "quilometro_final" && msgError}
           </Box>
         );
       })}

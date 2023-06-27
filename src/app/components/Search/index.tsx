@@ -32,4 +32,5 @@ export function Search({ size = "medium", className = "" }: SearchProps) {
       )}
     />
   );
+
 }

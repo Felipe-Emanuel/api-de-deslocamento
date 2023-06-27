@@ -90,8 +90,8 @@ type StateContextType = {
   setState: (state: StateType) => void;
   setHasSearched: Dispatch<SetStateAction<boolean>>;
   setData: Dispatch<SetStateAction<CardType[] & ItemWithType[] | null>>
-  handleChange: (e: ChangeEvent<HTMLInputElement>) => void;
-  clearValues: () => void;
+  handleChange: (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
+  clearValues: (name: string) => void;
 };
 
 export const StateContext = createContext<StateContextType>({
@@ -199,7 +199,7 @@ export const StateContextProvider = ({ children }: StateContextProvider) => {
     fetchData();
   }, [state]);
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setValue((previous) => ({
       ...previous,
@@ -207,9 +207,39 @@ export const StateContextProvider = ({ children }: StateContextProvider) => {
     }));
   };
 
-  const clearValues = () => {
-    setValue({});
+  const clearValues = (name: string) => {
+    const fixName = () => {
+      if(name === "categoriaHabilitacao") {
+        return "habilitação"
+      }
+      if (name === "vencimentoHabilitacao") {
+        return "vencimento"
+      }
+      if (name === "kmFinal") {
+        return "quilometro_final"
+      }
+      if (name === "observacao") {
+        return "observação"
+      }
+      if (name === "marcaModelo") {
+        return "modelo"
+      }
+      if (name === "anoFabricacao") {
+        return "fabricado"
+      }
+      if (name === "kmAtual") {
+        return "rodagem"
+      }
+
+      return name;
+    }
+
+    setValue((previous) => ({
+      ...previous,
+      [fixName()]: "",
+    }));
   };
+
 
   return (
     <StateContext.Provider
