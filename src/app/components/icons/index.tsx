@@ -10,7 +10,7 @@ import { StateType } from "@contexts/StateContext";
 import { StatePageType } from "@contexts/PageStateContext";
 
 interface StateTypeProps {
-  state: StateType
+  state: StateType | string | undefined
 }
 
 interface StatePageTypeProps {

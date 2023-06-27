@@ -23,7 +23,7 @@ export function SectionCard({ title, isLastObject }: SectionCardProps) {
   const [isModal, setIsModal] = useState(false);
   const [dataCard, setDataCard] = useState<(CardType & ItemWithType) | null>(null);
 
-  const filteredData = isLastObject ? data?.slice(-3) : data?.slice(0, -3);
+  const filteredData = isLastObject ? data?.slice(-4) : data?.slice(0, -4);
 
   return (
     <>
@@ -35,7 +35,7 @@ export function SectionCard({ title, isLastObject }: SectionCardProps) {
             setIsModal(true);
           };
 
-          const cardOptions = {
+          const cardOptions: { [key: string]: JSX.Element } = {
             cliente: <ClientCard data={item} onClick={handleClick} />,
             deslocamento: (
               <DisplacementCard data={item} onClick={handleClick} />

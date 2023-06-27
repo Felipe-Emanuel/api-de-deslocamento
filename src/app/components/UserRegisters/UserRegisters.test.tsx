@@ -2,6 +2,21 @@ import { render } from "@testing-library/react";
 import { UserRegisters } from ".";
 import { useLocalStorage } from "@hooks/useLocalStorage";
 
+jest.mock("swiper/react", () => ({
+  __esModule: true,
+  Swiper: jest.fn(),
+  SwiperSlide: jest.fn(),
+}));
+
+jest.mock("swiper", () => ({
+  __esModule: true,
+  A11y: jest.fn(),
+}));
+
+jest.mock("swiper/css", () => ({
+  __esModule: true,
+}))
+
 describe("<UserRegisters />", () => {
   it("should render without errors", () => {
     const { container } = render(<UserRegisters />);

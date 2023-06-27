@@ -2,7 +2,6 @@
 import styles from "./InfoSection.module.scss";
 import ParallaxTilt from "react-parallax-tilt";
 import { Thumbs } from "@/src/models/thumbs";
-import { Suspense } from "react";
 import { LinkButton } from "../LinkButton";
 import { FirstThumb } from "../Thumbs/FirstThumb";
 import { useStateContext } from "@hooks/useStateContext";
@@ -61,9 +60,7 @@ export function InfoSection() {
           tiltMaxAngleY={5}
           className={styles.thumb}
         >
-          <Suspense fallback={<p>carregando...</p>}>
-            {thumbs[state!].secondThumb}
-          </Suspense>
+          {thumbs[state!].secondThumb}
         </ParallaxTilt>
         <div className={styles.thumbInfo}>
           <h2 data-testid="secondTitle">{thumbs[state!].secondTitle}</h2>

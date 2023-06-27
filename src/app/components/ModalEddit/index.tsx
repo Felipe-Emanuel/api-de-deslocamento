@@ -14,6 +14,7 @@ import { deleteData, putData } from "@services/client";
 import { RegisterVehicleCard } from "@components/Register/RegisterVehicle/RegisterVehicleCard";
 import { RegisterConductorCard } from "@components/Register/RegisterConductor/RegisterConductorCard";
 import { RegisterDisplacementCard } from "@components/Register/RegisterDisplacement/RegisterDisplacementCard";
+import { usePageStateContext } from "../../data/hooks/usePageStateContext";
 
 interface ModalEdditProps {
   handleClick: () => void;
@@ -31,7 +32,7 @@ export function ModalEddit({ item, handleClick }: ModalEdditProps) {
   if (!item) return null;
 
   const { id } = item;
-  const { state } = useStateContext();
+  const { state, clearValues } = useStateContext();
   const { getDataAfterUpdate } = useNewPost();
   const {
     updatedConductor,
@@ -85,6 +86,7 @@ export function ModalEddit({ item, handleClick }: ModalEdditProps) {
 
         await getDataAfterUpdate();
         window?.localStorage.removeItem(`DESLOCAMENTO:cliente`)
+        clearValues()
     } catch (err) {
       return console.error(`${err}`);
     }

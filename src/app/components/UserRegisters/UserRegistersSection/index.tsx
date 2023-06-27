@@ -1,27 +1,30 @@
 import styles from "./UserRegisters.module.scss";
-import SwiperComponent from "../../Slider/Swiper";
+import SwiperComponent from "@components/Slider/Swiper";
 import { Client } from "../Cards/Client";
 import { Vehicle } from "../Cards/Vehicle";
-import { Section } from "../../containers/Section";
+import { NoData } from "@components/NoData";
+import { Section } from "@components/containers/Section";
 import { useState } from "react";
 import { Normalize } from "@/src/functions/Normalize";
 import { Conductor } from "../Cards/Conductor";
 import { SwiperSlide } from "swiper/react";
 import { Displacement } from "../Cards/Displacement";
 import { UserRegistersType } from "@/src/models/userPosts";
+import { StateType } from "@/src/app/data/contexts/StateContext";
 
 interface UserRegistersSectionProps {
   data: UserRegistersType[];
-  section: string;
+  section: StateType | string | undefined;
 }
 
 const inflection = require("inflection");
 
 export function UserRegistersSection({
   data = [],
-  section = "",
+  section = "cliente",
 }: UserRegistersSectionProps) {
-  if (data.length === 0) return null;
+  if (data.length === 0) return <NoData section={section} />;
+
 
   const [isHovered, setIsHovered] = useState(false);
 

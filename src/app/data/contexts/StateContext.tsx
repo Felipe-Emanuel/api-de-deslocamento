@@ -91,12 +91,14 @@ type StateContextType = {
   setHasSearched: Dispatch<SetStateAction<boolean>>;
   setData: Dispatch<SetStateAction<CardType[] & ItemWithType[] | null>>
   handleChange: (e: ChangeEvent<HTMLInputElement>) => void;
+  clearValues: () => void;
 };
 
 export const StateContext = createContext<StateContextType>({
   setHasSearched: () => {},
   setState: () => {},
   setData: () => {},
+  clearValues: () => {},
   handleChange: () => {},
   state: "cliente",
   filteredData: [],
@@ -205,6 +207,10 @@ export const StateContextProvider = ({ children }: StateContextProvider) => {
     }));
   };
 
+  const clearValues = () => {
+    setValue({});
+  };
+
   return (
     <StateContext.Provider
     value={{
@@ -218,7 +224,8 @@ export const StateContextProvider = ({ children }: StateContextProvider) => {
       setState,
       setData,
       setHasSearched,
-      handleChange
+      handleChange,
+      clearValues
     }}
   >
     {children}

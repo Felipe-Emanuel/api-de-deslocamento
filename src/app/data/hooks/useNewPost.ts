@@ -11,7 +11,7 @@ import { usePageStateContext } from "./usePageStateContext";
 
 export const useNewPost = () => {
   const { STORAGE_KEY } = useLocalStorage()!;
-  const { state, setData } = useStateContext();
+  const { state, setData, clearValues } = useStateContext();
   const { setPageState } = usePageStateContext();
   const existPost = useLocalStorage()?.getLocalStorage("USER_POSTS");
 
@@ -45,7 +45,8 @@ export const useNewPost = () => {
       setPageState("explorar");
     });
 
-    return window?.localStorage.removeItem(`${STORAGE_KEY}cliente`);
+    window?.localStorage.removeItem(`${STORAGE_KEY}cliente`);
+    return clearValues()
   };
 
   return {
