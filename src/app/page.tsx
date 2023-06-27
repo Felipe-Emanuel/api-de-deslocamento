@@ -5,15 +5,13 @@ import { InfoSection } from "./components/InfoSection";
 
 export default function Home() {
   return (
-    <>
-      <Container>
-        <h2 className={styles.subtitle}>
-          Conectando o mundo a você de forma simples e eficiente!
-        </h2>
-        <Section id="demo">
-          <InfoSection />
-        </Section>
-      </Container>
-    </>
+    <Container>
+      <h2 className={styles.subtitle}>
+        Conectando o mundo a você de forma simples e eficiente!
+      </h2>
+      <Section id="demo">
+        <InfoSection />
+      </Section>
+    </Container>
   );
 }

@@ -47,7 +47,7 @@ export function RegisterDisplacement() {
       const vehicleById = vehicles.filter(
         (vehicle) => vehicle.id === idVeiculo
       );
-      setInitialKm(vehicleById?.[0].kmAtual!);
+      setInitialKm(vehicleById?.[0]?.kmAtual || 0);
     }
   }, [idVeiculo]);
 

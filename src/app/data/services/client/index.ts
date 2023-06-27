@@ -9,8 +9,9 @@ export const getData = async (path: string | undefined) => {
     const { data } = await resp;
 
     return data
-  } catch (error) {
-    console.error(`Erro ao recuperar dados de ${path}:`, error);
+  } catch (error: any) {
+    console.error(`Erro ao recuperar dados de ${path}:`, error.response.data);
+    toast.error(`${error.response.data}`)
   }
 };
 
@@ -22,9 +23,9 @@ export const getDataById = async (path: string, id: string) => {
 
     toast.success("Sucesso")
     return data
-  } catch (error) {
-    console.error(`Erro ao recuperar dados de ${path} ${id}:`, error);
-    toast.error(`Erro ao recuperar dados de ${path} ${id}`);
+  } catch (error: any) {
+    console.error(`Erro ao recuperar dados de ${path} ${id}:`, error.response.data);
+    toast.error(`${error.response.data}`)
   }
 };
 
@@ -45,9 +46,9 @@ export const postData = async (path: string, body: unknown) => {
 
     toast.success("Sucesso")
     return data
-  } catch (error) {
-    console.error(`Erro ao postar em ${path}`, error);
-    toast.error(`Erro ao postar em ${path}`)
+  } catch (error: any) {
+    console.error(`Erro ao postar em ${path}`, error.response.data);
+    toast.error(`${error.response.data}`)
   }
 };
 
@@ -68,9 +69,9 @@ export const putData = async (path: string, id: string, body: unknown) => {
 
     toast.success("Sucesso")
     return data;
-  } catch (error) {
-    console.error(`Erro ao atualizar em ${path}`, error);
-    toast.error(`Erro ao atualizar em ${path}`)
+  } catch (error: any) {
+    console.error(`Erro ao atualizar em ${path}`, error.response.data);
+    toast.error(`${error.response.data}`)
   }
 };
 
@@ -91,8 +92,8 @@ export const deleteData = async (path: string, id: string) => {
     });
 
     toast.success("Sucesso")
-  } catch (error) {
-    console.error(`Erro ao deletar em ${path}`, error);
-    toast.error(`Erro ao deletar em ${path}`)
+  } catch (error: any) {
+    console.error(`Erro ao deletar em ${path}`, error.response.data);
+    toast.error(`${error.response.data}`)
   }
 };

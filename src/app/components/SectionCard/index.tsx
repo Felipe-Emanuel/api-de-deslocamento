@@ -27,7 +27,7 @@ export function SectionCard({ title, isLastObject }: SectionCardProps) {
 
   return (
     <>
-      <h1>{data.length <= 3 ? null : title}</h1>
+      <h1>{data.length <= 4 ? null : title}</h1>
       <div className={styles.sectionCard}>
         {filteredData?.map((item, i) => {
           const handleClick = () => {
